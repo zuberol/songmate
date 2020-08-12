@@ -9,6 +9,10 @@ This app's main objective is to connect people who have similar music taste. The
 - create endpoints,
 - use Thymeleaf to render SIMPLE views.
 
+### Make user sessions, connect it to db
+- Timeout after inactivity interval,
+- Authorization of new users
+
 ### Check Spotify API tutorial on connecting your first app to their database.
 - https://developer.spotify.com/documentation/web-api/
 
