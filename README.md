@@ -16,7 +16,8 @@ This app's main objective is to connect people who have similar music taste. The
 
 ### Security layer i.e. authentication, authorization.
 - read spring security documentation,
-- add security config to the project,
+- add security config to the project - i suppose we will use JWT,
+- authenticate new user, by asking Spotify auth server for user credentials,
 - create some users and assign roles to them, then add it db,
 - match endpoints with user roles/permissions,
 - set Timeout after inactivity interval - i think it can be done, by using application.properties file.
@@ -47,5 +48,9 @@ This app's main objective is to connect people who have similar music taste. The
 - do some research,
 - dockerize it.
 
+### Make it reactive
+- study async Java,
+- study reactive programming paradigm,
+- use Rx.Java.
 
 
