@@ -73,7 +73,7 @@ Cele i zalozenia aplikacji:
 
 
 ## Service matchmaker:
-- Uzytkownicy subskrybuja sie do hashtagow. Listy uzytkownikow zasubskrybowanych do konkretnych hashtagow beda wykorzystane w algorytmie matchowania np. #discover-fismoll-wibe, #jak-to-jest-byc-fanem-disco-polo-dobrze?, #songs-about-drinking-and-doin-drugs, #your-mom-and-i-chill-for-this, #girl-rap-sucks-NOT, #cool-stuff-i-listen-when-homies-aret-here-anymore-xd, #soft-female-voice
+---------------------- Uzytkownicy subskrybuja sie do hashtagow. Listy uzytkownikow zasubskrybowanych do konkretnych hashtagow beda wykorzystane w algorytmie matchowania np. #discover-fismoll-wibe, #jak-to-jest-byc-fanem-disco-polo-dobrze?, #songs-about-drinking-and-doin-drugs, #your-mom-and-i-chill-for-this, #girl-rap-sucks-NOT, #cool-stuff-i-listen-when-homies-aret-here-anymore-xd, #soft-female-voice
 Hashtag moze wydac sie zlym, niewystarczajacym rozwiazaniem, ktore za malo mowi o temacie playlisty. Lepiej, zeby to byl sam temat. Jedno zdanie, ktore opisuje te playliste.
 Moze dac uzytkownikowi opcje do zrobienia tak i tak. Nie wszyscy chca rozpisywac elaboraty o tym czego szukaja. Trzeba wziac to pod uwage, ze duza czesc ludzi bedzie chciala wbic, zabic czas czyms przyjemnym (np. szerokorozumiane matchowanie lub jakas podobna czynnosc, nie wymagajaca duzo nakladu umyslowego XD).
 
@@ -141,6 +141,12 @@ Ankiety w skali 1-5. Serwis powinien przetwarzać dane (liczy średnią, warianc
 ### Profil uzytkownika:
 Powinien miec tez secje z komentarzami na jego temat. Tak jak na steamie. Mysle, ze to spoko feature. Uzytkownik powinien moc wylaczyc/wlaczyc/ukryc czat.
 Czy pozwolic uzytkownikom ogladac niezmatchowanych uzytkownikow? Chyba nie.
+
+
+
+
+
+### Grupowa playlista?
 
 
 
