@@ -54,3 +54,94 @@ This app's main objective is to connect people who have similar music taste. The
 - use Rx.Java.
 
 
+
+
+
+
+
+
+# Application Description
+
+Cele i zalozenia aplikacji:
+1. Matchowanie uzytkownikow z podobnymi gustami muzycznymi.
+2. Aplikacja powinna miec "mini serwisy", ktore pomoga uzytkownikom nawiazac kontakt. Zdaje sie, ze jest to wazny element naszej aplikacji, bo bardzo by nas wyroznilo np. od Tindera, ktory TYLKO matchuje i zostawia uzytkownikow samym sobie, przez co niektorzy zamiast wyrywac dupy, zbieraja pokemony.
+3. Aplikacja prowokuje interakcje miedzy uzytkownikami.
+4. Spotify tworzy playlisty swoim algorytmem (tworzy jakies daily playlisty gowniane). Nasza apka korzysta z opinii uzytkownikow, co jest wedlug mnie o wiele "precyzyjniejsze" i wyrozni nas na tle Spotify.
+5. Najważniejszym filarem aplikacji jest społeczność użytkowników.
+
+
+
+
+## Service matchmaker:
+- Uzytkownicy subskrybuja sie do hashtagow. Listy uzytkownikow zasubskrybowanych do konkretnych hashtagow beda wykorzystane w algorytmie matchowania np. #discover-fismoll-wibe, #jak-to-jest-byc-fanem-disco-polo-dobrze?, #songs-about-drinking-and-doin-drugs, #your-mom-and-i-chill-for-this, #girl-rap-sucks-NOT, #cool-stuff-i-listen-when-homies-aret-here-anymore-xd, #soft-female-voice
+Hashtag moze wydac sie zlym, niewystarczajacym rozwiazaniem, ktore za malo mowi o temacie playlisty. Lepiej, zeby to byl sam temat. Jedno zdanie, ktore opisuje te playliste.
+Moze dac uzytkownikowi opcje do zrobienia tak i tak. Nie wszyscy chca rozpisywac elaboraty o tym czego szukaja. Trzeba wziac to pod uwage, ze duza czesc ludzi bedzie chciala wbic, zabic czas czyms przyjemnym (np. szerokorozumiane matchowanie lub jakas podobna czynnosc, nie wymagajaca duzo nakladu umyslowego XD).
+
+- 3 etapy matchowania:
+    - prePrematch - aplikacja preprematchuje 2 użytkowników porownując wybrane przez nich playlisty. Użytkownicy prePrezmatchowani przechodzą do etapu prematch,
+    - prematch - uzytkownik A anonimowo wysyla challenge z servisu Challenge do uzytkownika B (chyba tylko do jednego, zeby nie spamowac). Uzytkownik B przechodzi challenge i odsyla odpowiedz.
+    - match - Uzytkownik A na podstawie odpowiedzi uzytkownika B podejmuje decyzje o zmatchowaniu.
+
+
+
+
+## Service Challenge:
+1. Challenge musi "zmuszac" obydwu uzytkownikow do interakcji. Nie moze byc tak, ze tylko jeden bierze w nim CZYNNY udzial
+2. Dwa rodzaje challenge'y.
+  - challenge od użytkownika A do użytkownika B - służy do matchowania użytkowników,
+  - challenge wysyłany od aplikacji do użytkownika - cele marketingowe. Może zadanie związane z jakimś obecnie trwającym festiwalem muzycznym. Po wykonaniu i ocenie przez ludzi z festiwalu możesz otrzymać wejściówkę albo cokolwiek, co zaproponują organizatorzy.
+3. Challenge musza byc roznorodne, powinny sie zmieniac.
+
+Przykladowe challenge:
+- Temat: Tworzenie wspolnej playlisty z jakims tematem.
+- Temat: Promowanie jakiegos artysty, najlepiej niszowego. Sekcja z artykulem na temat artysty, moze wywiadem. Cokolwiek, co pozwoli go poznac. Artysta musi skomponowac playliste muzyki pod wybrany przez niego temat/hashtag/cokolwiek_co_wymyslimy. Chodzi o to, zeby pokazac, ze on korzysta z naszej aplikacji
+- Temat: Uzytkownik musi stworzyc artykul o swoim ulubionym artyscie, ktorego chce wypromowac, o ktorym chce, zeby uzytkownicy poznali. Aplikacja podpowiada jak moze wygladac taki artykul, ale nie wymusza na uzytkowniku formy. Np. Apka zapewnia "szkielet" artykułu - wstep, rozwiniecie, zakonczenie w formie pytan. Npnp. 
+Co wyroznia tego artyste?
+Ktore albumy, piosenki chcesz wyroznic?
+Co najbardziej podoba ci sie w nim? W jego muzyce?
+Artykul moze byc zaproszeniem do challenge'u. Np. Dobierz 3 piosenki, ktore sa w tym stylu, ktore ci sie podobaja.
+- Temat: Uzytkownik dostaje powiadomienie o nowym challenge'u. Dobierz 3 piosen
+- Temat: Uzytkownik A napisal artykul o jakims zespole/artyscie. Dobierz 3 piosenki
+- Temat: Ocen playliste - Przed trzema piosenkami uzytkownik moze, ale nie musi dostac dodatkowy komentarz od autora na temat tych piosenek w stylu: "Wanna, wino. Na wieczorny #wpiateklezewwannie" albo "7 rano, mroz, czas uderzac w trasę", czy "Trzy piosenki od Hani Rani, bo jest zajebista i zasluguje na wieksza publike"
+Uzytkownik dostaje 3 piosenki, ktore moze przesluchac za pomoca wbudowanego api spotify i decyzje, czy chce sie zmatchowac.
+- Temat: Uzytkownik A wszedl na strone z artykulem i spedzil na niej 10min. Prawdopodobnie go przeczytal. System sprobuje ich zmatchowac wysylajac dedykowany challenge jednemu i drugiemu.
+
+
+
+### Playlisty na stronie i w bazie:
+- Playlista powinna miec sekcje komentarzy, zeby mogli wyrazac swoje opinie.
+- Tworzenie grupowe playlist przez uzytkownikow.
+- Podobno limit piosenek w playliscie to wiecej niz 10000. To duzo.  Limit playlist na uzytkownika to na pewno wiecej niz 1000. Aplikacja powinna dodawac playlisty do konta uzytkownika na Spotify. Wewnatrz apki Spotify mozna wrzucac playlisty w foldery podobno. Nasza apka powinna dodawac playlisty do jakichs stworzonych znanych folderow np. songmate-latest
+
+
+### Mikroservice app_stats
+Serwis zbierający statystyki na temat ruchu jaki generuje aplikacja. Ilość użytkowników, ilość zmatchowanych osób, wymienionych wiadomości, itd. Ten serwis odpowiada za przetwarzanie tych wszystkich danych z innych serwisów. Output z tego serwisu posłuży nam w celach marketingowych. Można umieszczać te przetworzone dane na stronie głównej, dostępnej PRZED zalogowaniem do aplikacji, żeby zachęcić do skorzystania z niej. 
+
+### Microservice user_experience
+Potrzebujemy servis badający, ktore challenge podobaja sie uzytkownikom najbardziej. Powinnismy wysylac ankiete, poprzedzona zapytaniem, czy chca ja wypelnic i wspomoc tym aplikacje.
+Ankiety w skali 1-5. Serwis powinien przetwarzać dane (liczy średnią, wariancję, itd).
+
+
+
+
+## Frontend:
+- Bez niego nie przyciagniemy ludzi. Musi byc responsywny, zawierac podobne rzeczy do matchowania z Tindera, które dobrze wyglądają i dają fajny feeling użytkowania. #React.js,
+- powinien być w barwach nawiązujących do Spotify.
+
+### Strona glowna po zalogowaniu (cos co zacheci uzytkownika do korzystania):
+- Tu wkracza Mikroservice app_stats, np. wyskakuje informacja, ze Piosenka xyz polaczyla najwiecej uzytkowników
+
+### Interaktywny feed/wall jak na fb, playlisty grupowe:
+- Informacje o zmatchowanych osobach ze Spotify, np.
+    - Uzytkownik xyz polubil nowy utwor na Spotify. Kliknij aby przesluchac fragment(chyba jest taka funkcjonalnosc wbudowana w API spotify, tak jak na apce tindera sie da posluchac)
+    - Uzytkownik xyz stworzyl playliste o nazwie "Mocne pierdolniecie". Kliknij, zeby przesluchac, dodac do konta.
+    - Uzytkownik xyz opublikowal artykul, z hashtagiem ktorego wlasnie szukasz. Wyrozniona informacja.
+    - Opublikowano wsrod znajomych chec stworzenia nowej playlisty z okreslonym tematem. Przylacz sie.
+
+### Profil uzytkownika:
+Powinien miec tez secje z komentarzami na jego temat. Tak jak na steamie. Mysle, ze to spoko feature. Uzytkownik powinien moc wylaczyc/wlaczyc/ukryc czat.
+Czy pozwolic uzytkownikom ogladac niezmatchowanych uzytkownikow? Chyba nie.
+
+
+
+
