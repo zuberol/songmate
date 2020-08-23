@@ -39,10 +39,10 @@ public class User implements UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    @Enumerated(EnumType.STRING)
+    
+    @Enumerated(EnumType.STRING) 
     @ElementCollection
-    @CollectionTable(name = "role")
+    @CollectionTable(name = "role") //fetch = FetchType.EAGER
 //    @JoinTable("user_entity")     //TODO add Role to users table
     private Set<Role> role;
 
