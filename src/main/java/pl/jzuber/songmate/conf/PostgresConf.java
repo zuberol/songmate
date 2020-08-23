@@ -35,6 +35,7 @@ public class PostgresConf {
         return dataSourceBuilder.build();
     }
 
+    //@Autowired
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
         auth
