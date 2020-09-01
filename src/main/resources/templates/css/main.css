@@ -1,0 +1,265 @@
+* {
+    box-sizing: border-box;
+    /*font-family: Circular, Helvetica, Arial, sans-serif, IosFix;*/
+    font-family: 'Courier New';
+}
+
+@font-face {
+    font-family: Circular;
+    src: url('../fonts/Circular.otf');
+    font-weight: bold;
+}
+
+p, a {
+    padding: 0;
+    margin: 0;
+    font-family: Circular;
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    background-color: rgb(40, 41, 44);
+    margin: 0;
+    padding: 0;
+    color: whitesmoke;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-family: 'Courier New';
+}
+
+.main-nav {
+    min-height: 50px;
+    background-color: #1DB954;
+    position: relative;
+    color: whitesmoke;
+    font-size: 1.5rem;
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+}
+
+
+.logo {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: deepskyblue;
+    margin-right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.main-nav__title {
+    font-size: 2rem;
+    margin-right: 10px;
+}
+
+
+.main-wrapper {
+    box-sizing: border-box;
+    width: 50%;
+    padding: 20px;
+    margin: auto;
+    margin-top: 40px;
+    vertical-align: center;
+
+    /*TO CHANGE*/
+    background: linear-gradient(0deg, #f6cb6c 20%, #f3c65d 65%, #f2ae54 100%);
+}
+
+
+.btn, .spotify-btn, .fb-btn {
+    font-size: 11px;
+    line-height: 1;
+    border-radius: 500px;
+    padding: 20px 0 20px;
+
+    display: block;
+    margin: 10px auto 10px auto;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 700;
+
+    cursor: pointer;
+    background-color: rgb(130, 130, 130);
+    border: 1px solid transparent;
+
+
+    transition-property: background-color, border-color, color, box-shadow, filter, -webkit-box-shadow, -webkit-filter;
+    transition-duration: .3s;
+    border-width: 0;
+    letter-spacing: 2px;
+    max-width: 160px;
+    min-width: 160px;
+    
+    text-transform: uppercase;
+
+    text-align: center;
+
+    align-items: center;
+
+
+}
+
+.spotify-btn {
+    background-color: #1DB954;
+}
+
+.fb-btn {
+    background-color: #385898;
+    box-shadow: black;
+}
+
+
+@keyframes fading-effect {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+
+
+
+/*
+    Change with third
+.main-wrapper-one,
+.main-wrapper-two {
+    display: block;
+    height: 100vh;
+    background-color: black;
+    margin: 0;
+    padding: 50px;
+    opacity: 0.1;
+
+} */
+
+
+
+
+
+
+.background-div-three {
+    display: block;
+
+    background-image: url('../images/pexels-sofia-garza-3007347.jpg');
+    background-size: 130%;
+    background-repeat: no-repeat;
+    background-position: 0% 0%;
+
+
+    animation: fading-effect 2s ease-in 0s;
+
+
+
+    width: 100vw;
+    height: 70vh;
+    min-height: 70vh;
+
+}
+
+
+.main-wrapper-three {
+    display: block;
+
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 50px;
+    background: rgba(0, 0, 0, 0.7);
+
+
+}
+
+
+.main-wrapper-two {
+
+}
+
+.main-wrapper-three {
+
+}
+
+.background-div-one,
+.background-div-two {
+    display: block;
+    background-position: 0% 0%;
+/*    transition: opacity 1s ease-in-out;
+    animation: 4s ease-out 0s 1 fading-effect; */
+    background-repeat: no-repeat;
+    width: 100%;
+    height: auto;
+}
+
+.background-div-one {
+    background-image: url('../images/aleksandar-pasaric-2078076.jpg');
+    /*'https://images.pexels.com/photos/3007347/pexels-photo-3007347.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'*/
+    background-size: 130%;
+}
+
+.background-div-two {
+    background-image: url('../images/image-flipped.jpg');
+    /*https://images.unsplash.com/photo-1557511113-84fb922d34d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1216&q=80*/
+    background-size: 130%;
+}
+
+
+
+
+/*
+https://images.unsplash.com/photo-1503853585905-d53f628e46ac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=633&q=80
+https://images.unsplash.com/photo-1516108759901-daf1a20f9281?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80
+
+
+
+*/
+
+.spotify-font__heading,
+.spotify-font__paragraph   {
+    text-transform: uppercase;
+    font-family: Circular, 'Courier New', Courier, monospace;
+    color: whitesmoke;
+}
+
+.spotify-font__heading {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 3rem;
+}
+.spotify-font__paragraph {
+    font-size: 1rem;
+}
+
+.black-background {
+    background-color: black;
+    width: auto;
+    height: 400px;
+    margin: 0;
+    padding: 50px;
+}
+
+.main-footer {
+    width: 100%;
+    height: 150px;
+    background-color: black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
