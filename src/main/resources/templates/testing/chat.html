@@ -1,0 +1,48 @@
+<html>
+<header>
+
+    <link rel="stylesheet" href="chat.css">
+
+    <script>
+        const foo = function (){
+            let ws = new WebSocket('ws://localhost:8080/app/msg');
+            //logging the websocket property properties
+            console.log(ws);
+            //sending a message when connection opens
+            ws.onopen = (event) => ws.send("This is a message from client but longer");
+            //receiving the message from server
+            ws.onmessage = msg => {
+                console.log(msg)
+                const chatbox = document.querySelector('.message-div');
+                const newParagraph = document.createElement('p');
+                newParagraph.innerHTML = msg.data;
+                chatbox.appendChild(newParagraph);
+            }
+
+            ws.onclose = function(event) {
+                if (event.wasClean) {
+                    alert(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+                } else {
+                    // e.g. server process killed or network down
+                    // event.code is usually 1006 in this case
+                    alert('[close] Connection died');
+                }
+            };
+
+            ws.onerror = function(error) {
+                alert(`[error] ${error.message}`);
+            };
+
+
+        }
+    
+    </script>
+
+</header>
+<body>
+    <button onclick="foo()">send msg</button>
+    <h1>This is a chat page</h1>
+    <div class="message-div"></div>
+</body>
+
+</html>

@@ -1,15 +1,12 @@
 package pl.jzuber.songmate.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-@Entity
+import org.springframework.data.annotation.Id;
+
+
 public class Artist {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String href;                // A link to the Web API endpoint providing full details of the artist.

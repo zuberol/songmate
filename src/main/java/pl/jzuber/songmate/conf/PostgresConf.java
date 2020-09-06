@@ -1,55 +1,33 @@
 package pl.jzuber.songmate.conf;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.jdbc.DataSourceBuilder;
+import io.r2dbc.spi.ConnectionFactories;
+import io.r2dbc.spi.ConnectionFactory;
+import io.r2dbc.spi.ConnectionFactoryOptions;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
+import org.springframework.data.r2dbc.config.AbstractR2dbcConfiguration;
+import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 
-import javax.sql.DataSource;
+
+import static io.r2dbc.spi.ConnectionFactoryOptions.*;
+import static io.r2dbc.spi.ConnectionFactoryOptions.DATABASE;
 
 @Configuration
-public class PostgresConf {
-
-    private final DataSource dataSource;
-
-    @Autowired
-    @Lazy       // so injecting DataSource from this file can be possible
-    public PostgresConf(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
+@EnableR2dbcRepositories
+public class PostgresConf extends AbstractR2dbcConfiguration {
 
     @Bean
-    DataSource getDataSource() {
-        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-        dataSourceBuilder.driverClassName("org.postgresql.Driver");
-        dataSourceBuilder.url("jdbc:postgresql://localhost:5432/kuba");     //https://jdbc.postgresql.org/documentation/81/connect.html
-        dataSourceBuilder.username("kuba");
-        dataSourceBuilder.password("kuba");
+    public ConnectionFactory connectionFactory() {
+        return ConnectionFactories.get(ConnectionFactoryOptions.builder()
+                .option(DRIVER, "postgresql")
+                .option(HOST, "localhost")
+                .option(PORT, 5432)  // optional, defaults to 5432
+                .option(USER, "kuba")
+                .option(PASSWORD, "kuba")
+                .option(DATABASE, "kuba")
+                .build());
+//        return ConnectionFactories.get("r2dbc:postgresql://kuba:5432/kuba");
 
-        //.addScript("classpath:org/springframework/security/core/userdetails/jdbc/users.ddl")
-        //System.out.println(dataSourceBuilder.getClass().getName());
-
-        return dataSourceBuilder.build();
-    }
-
-    //@Autowired
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-        auth
-                .jdbcAuthentication()
-                .dataSource(dataSource);
-
-    }
-
-    @Bean
-    public JdbcDaoImpl userDetailsService() {
-        JdbcDaoImpl jdbcDaoImpl = new JdbcDaoImpl();
-        jdbcDaoImpl.setDataSource(dataSource);
-
-        return jdbcDaoImpl;
     }
 
 }

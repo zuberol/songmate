@@ -3,17 +3,19 @@ package pl.jzuber.songmate.model;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import pl.jzuber.songmate.security.Role;
+import org.springframework.data.relational.core.mapping.Table;
+// import org.springframework.data.relational.core.mapping.Column;
 
 import javax.persistence.*;
+
 import java.util.Collection;
 import java.util.Set;
 
-@Entity
-@Table(name = "users")
+@Table("users")
 public class User implements UserDetails {
 
     //@UniqueConstraint()
-    @Column(unique = true)
+    @Column     //(unique = true)
     private String username;
     private String password;
 
@@ -40,7 +42,7 @@ public class User implements UserDetails {
         this.password = password;
     }
     
-    @Enumerated(EnumType.STRING) 
+    @Enumerated(EnumType.STRING)
     @ElementCollection
     @CollectionTable(name = "role") //fetch = FetchType.EAGER
 //    @JoinTable("user_entity")     //TODO add Role to users table

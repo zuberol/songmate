@@ -4,6 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+//TODO refactor it to reactive
+
+
 @Controller
 public class MainController {
 
@@ -11,12 +14,12 @@ public class MainController {
 //    public String defaultMapping(Model model){
 //        return "index";
 //    }
-
-    @RequestMapping("/error")   //default route
-    public String getError(Model model){
-        return "error";
-    }
-
+//
+//    @RequestMapping("/error")   //default route
+//    public String getError(Model model){
+//        return "error";
+//    }
+//
 
 
 }
