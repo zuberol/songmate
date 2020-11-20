@@ -1,5 +1,8 @@
 package pl.jzuber.songmate.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -7,6 +10,7 @@ import javax.persistence.*;
 
 
 @Entity
+@Getter @Setter @NoArgsConstructor
 public class Playlist {
 
     @Id
@@ -21,27 +25,4 @@ public class Playlist {
     Track track;
 
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Track getTrack() {
-        return track;
-    }
-
-    public void setTrack(Track track) {
-        this.track = track;
-    }
 }

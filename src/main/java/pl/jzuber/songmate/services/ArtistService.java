@@ -1,11 +1,10 @@
 package pl.jzuber.songmate.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pl.jzuber.songmate.model.Artist;
-import pl.jzuber.songmate.repositories.ArtistRepository;
-
-import java.util.List;
+import pl.jzuber.songmate.persistance_layer.repositories.ArtistRepository;
 
 @Service
 public class ArtistService {
@@ -13,7 +12,7 @@ public class ArtistService {
     final ArtistRepository artistRepository;
 
     @Autowired //DI
-    public ArtistService(ArtistRepository artistRepository) {
+    public ArtistService(/*@Qualifier("fakeArtistRepository") */ArtistRepository artistRepository) {
         this.artistRepository = artistRepository;
     }
 

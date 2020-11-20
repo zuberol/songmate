@@ -3,3 +3,4 @@ docker run --name songmate-db -e POSTGRES_PASSWORD=sngpass -d postgres -p 5432:5
 ## show containers
 docker ps
 
+
