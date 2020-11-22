@@ -8,25 +8,20 @@ import lombok.experimental.SuperBuilder;
 import pl.jzuber.songmate.model.User;
 import pl.jzuber.songmate.utils.CustomChallengeDeserializer;
 
-@MappedSuperclass
-@Getter @Setter
-@NoArgsConstructor
-@SuperBuilder
+@MappedSuperclass   // JPA chyba, nie pamietam
 @JsonDeserialize(using = CustomChallengeDeserializer.class)
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter @Setter
+@SuperBuilder
 public abstract class Challenge {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
-    protected String challenge_name;
+    protected String challengeName;
     protected  User addressee;
     protected User recipient;
 
-    public Challenge(Long id, String challenge_name, User addressee, User recipient) {
-        this.id = id;
-        this.challenge_name = challenge_name;
-        this.addressee = addressee;
-        this.recipient = recipient;
-    }
 
     public abstract boolean isValidChallenge();
 

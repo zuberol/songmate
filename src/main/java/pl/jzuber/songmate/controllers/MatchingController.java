@@ -17,27 +17,15 @@ public class MatchingController {
         this.challengeDao = challengeDao;
     }
 
-//    @RequestMapping(value = "/post-challenge", consumes = "application/json", produces = "application/json")
-//    void postChallenge(@RequestBody JsonNode values) {
-//
-//        System.out.println(values);
-//
-//        //challengeDao.challengeRepository.save(challenge);
-//    }
-
-//    @RequestMapping(value="/post-challenge", method = RequestMethod.POST)
-//    public JsonNode index(@RequestBody JsonNode jsonNode) {
-//        System.out.println("Received JSON:"+jsonNode.toString());
-//        return jsonNode;
-//    }
-
     @PostMapping("/custom")
-    public void customController(@RequestBody Challenge challenge) throws Exception {
-        System.out.println();
-        System.out.println("New challenge is spotted: "  + challenge.getClass().getCanonicalName());
-        System.out.println("Class name " + challenge.getClass().getName());
-        System.out.println("Class name " + challenge.getClass().getSimpleName());
-    }
+    public Challenge customController(@RequestBody Challenge challenge) throws Exception {
 
+        if (challenge.getClass().getName() == "pl.jzuber.songmate.model.challenges.SendMeSongChallenge") {
+            System.out.println("\n"+(SendMeSongChallenge)challenge);
+            return challenge;
+        }
+
+        return null;
+    }
 
 }

@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import pl.jzuber.songmate.model.challenges.Child;
 
 
 @EnableJpaAuditing
@@ -24,9 +25,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class SongmateApplication {
 
     public static void main(String[] args) {
-        //SpringApplication.run(SongmateApplication.class, args);
-        SpringApplication application =
-                new SpringApplication(SongmateApplication.class);
+        SpringApplication application = new SpringApplication(SongmateApplication.class);
         application.setAdditionalProfiles("dev");
         application.run(args);
     }

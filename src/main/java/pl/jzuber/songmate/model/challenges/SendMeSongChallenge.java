@@ -14,20 +14,34 @@ import javax.persistence.Id;
 
 @Entity
 @NoArgsConstructor
-@SuperBuilder
 @Getter @Setter
+@SuperBuilder
 public final class SendMeSongChallenge extends Challenge {
     private String some_shit;
 
-    public SendMeSongChallenge(Long id, User addressee, User recipient) {
 
+    public SendMeSongChallenge(Long id, User addressee, User recipient) {
         super(id, "SendMeSongChallenge", addressee, recipient);
     }
 
     @Override
     public boolean isValidChallenge() {
-        return challenge_name == null || addressee == null || recipient == null;
+        return challengeName == null || addressee == null || recipient == null;
     }
 
+    @Override
+    public String toString() {
+        return "SendMeSongChallenge{" +
+                "some_shit='" + some_shit + '\'' +
+                ", id=" + id +
+                ", challenge_name='" + challengeName + '\'' +
+                ", addressee=" + addressee +
+                ", recipient=" + recipient +
+                '}';
+    }
+
+//    public static void main(String[] args) {
+//        System.out.println(SendMeSongChallenge.builder().addressee(null).recipient(null).id(1L).some_shit("some").challenge_name("cool").build());
+//    }
 
 }
