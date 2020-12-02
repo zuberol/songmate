@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  font-family: 'Open Sans', 'Roboto';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(36, 37, 39);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.BoxesWrapper {
+  background-color: rgb(243, 195, 100);
+  max-width: 600px;
+  min-height: 70vh;
+  padding: 50px;
+  margin: 50px auto;
+  border-radius: 15px;
+}
