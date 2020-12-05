@@ -7,12 +7,14 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
 import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 import javax.sql.DataSource;
 
 @Configuration
-public class PostgresConf {
+public class PostgresConf implements WebMvcConfigurer {
 
     private final DataSource dataSource;
 
@@ -52,6 +54,12 @@ public class PostgresConf {
         jdbcDaoImpl.setDataSource(dataSource);
 
         return jdbcDaoImpl;
+    }
+
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**").allowedMethods("*");
     }
 
 }

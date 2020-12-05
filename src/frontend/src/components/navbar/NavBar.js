@@ -9,14 +9,12 @@ class NavBar extends Component {
 
     render() {
         return (<div className="NavBar">
-                    <NavBarItem imgSrc="icons/cloud.svg" linkPath="/"/>
+                    <NavBarItem imgSrc="icons/home.svg" linkPath="/"/>
                     <NavBarItem imgSrc="icons/darts.svg" linkPath="/challenge"/>
-                    <NavBarItem imgSrc="icons/data-transfer.svg" linkPath="/challenge"/>
-                    <NavBarItem imgSrc="icons/microprocessor.svg"/>
-                    <NavBarItem imgSrc="icons/rattle.svg"/>
-                    <NavBarItem imgSrc="icons/home.svg"/>
-                    <NavBarItem imgSrc="icons/users.svg"/>
-                    <NavBarItem imgSrc="icons/compass.svg"/>
+                    <NavBarItem imgSrc="icons/data-transfer.svg" linkPath="/msg"/>
+                    <NavBarItem imgSrc="icons/microprocessor.svg" linkPath="events"/>
+                    <NavBarItem imgSrc="icons/users.svg" linkPath="/friends"/>
+                    <NavBarItem imgSrc="icons/compass.svg" linkPath="localEvents"/>
         </div>);
     }
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Challenge.css';
+import ChallengePlaceholder from './../components/ChallengePlaceholder';
 import YouTube from 'react-youtube'
 
 
@@ -49,10 +50,6 @@ class ChallengeBox extends Component {
         challenge: null
     }
 
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         fetch("http://localhost:8080/getChallenge",{
             method: 'GET', // *GET, POST, PUT, DELETE, etc.
@@ -94,7 +91,7 @@ class ChallengeBox extends Component {
 
         return (
             <div className="ChallengeBoxWrapper">
-                {challenge}
+                {challenge || <ChallengePlaceholder></ChallengePlaceholder>}
             </div>
         )
     }

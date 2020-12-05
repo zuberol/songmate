@@ -1,6 +1,7 @@
 .ChallengeBoxWrapper {
     background-color: salmon;
     padding: 20px;
+    height: 100%;
 }
 
 .challengeButtonWrapper {
