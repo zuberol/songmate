@@ -6,7 +6,7 @@ import pl.jzuber.songmate.model.User;
 import pl.jzuber.songmate.services.UserService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/app/user")
 public class UserController {
 
     @Autowired
@@ -18,14 +18,5 @@ public class UserController {
         return userService.userDao.findAll();
     }
 
-//    @PostMapping
-//    //@Validated
-//    public String changePassword(@RequestBody ChangePasswordForm form){
-//
-//        //before check if form.getUsername() == this.user
-//        userService.changeUserPassword(form.getUsername(), form.getPassword());
-//
-//        return "wat";
-//    }
 
 }
