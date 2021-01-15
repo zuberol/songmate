@@ -6,6 +6,7 @@ import ChallengePage from './pages/ChallengePage';
 import HomePage from './pages/HomePage'
 import EventsPage from './pages/EventsPage'
 import MsgPage from './pages/MsgPage'
+import LandingPage from "./pages/LandingPage";
 
 class App extends Component {
 
@@ -13,11 +14,12 @@ class App extends Component {
 
     return (
       <div style={{height: "100%", backgroundColor: "red"}}>
-        <NavBar/>
-        <Route exact path="/" component={HomePage}></Route>
-        <Route exact path="/challenge" component={ChallengePage}></Route>
-        <Route exact path="/events" component={EventsPage}></Route>
-        <Route exact path="/msg" component={MsgPage}></Route>
+        <Route path="/app" component={NavBar}></Route>
+        <Route exact path="/" component={LandingPage}></Route>
+        <Route exact path="/app/" component={HomePage}></Route>
+        <Route exact path="/app/challenge" component={ChallengePage}></Route>
+        <Route exact path="/app/events" component={EventsPage}></Route>
+        <Route exact path="/app/msg" component={MsgPage}></Route>
       </div>
     );
   }
