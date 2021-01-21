@@ -16,14 +16,14 @@ import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static pl.jzuber.songmate.security.Role.*;
-
-@Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//
+//@Configuration
+////@EnableWebSecurity    //todo ogarnac co to robi jedno i drugie
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConf extends WebSecurityConfigurerAdapter {
 
     private final PasswordEncoder passwordEncoder;
-    private final JdbcDaoImpl jdbcDao;
+    private final JdbcDaoImpl jdbcDao;      //todo potrzebne to?
 
     @Autowired
     public SecurityConf(PasswordEncoder passwordEncoder, JdbcDaoImpl jdbcDao) {

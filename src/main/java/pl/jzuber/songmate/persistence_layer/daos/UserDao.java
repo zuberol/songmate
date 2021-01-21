@@ -25,7 +25,7 @@ public class UserDao {
 
     UserRepository userRepository;
 
-    @Autowired
+    @Autowired //@Qualifier("psqlUserRepo")
     public UserDao(@Qualifier("fakeUserRepo") UserRepository userRepository) {
         this.userRepository = userRepository;
     }

@@ -1,6 +1,7 @@
 package pl.jzuber.songmate.persistance_layer.repositories;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import pl.jzuber.songmate.model.User;
 
 import java.util.stream.Stream;
