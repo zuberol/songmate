@@ -1,16 +1,16 @@
 package pl.jzuber.songmate.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import pl.jzuber.songmate.model.Artist;
 import pl.jzuber.songmate.model.challenges.Challenge;
 import pl.jzuber.songmate.model.challenges.SendMeSongChallenge;
 import pl.jzuber.songmate.model.challenges.TrackRecomendationChallenge;
-import pl.jzuber.songmate.persistance_layer.daos.ChallengeDao;
+import pl.jzuber.songmate.persistence_layer.daos.ChallengeDao;
 
 import java.util.Random;
 
-@RestController
+@RestController("/app")
 public class MatchingController {
 
     ChallengeDao challengeDao;

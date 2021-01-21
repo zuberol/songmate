@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.jzuber.songmate.model.challenges.Challenge;
 import pl.jzuber.songmate.model.challenges.SendMeSongChallenge;
 import pl.jzuber.songmate.model.User;
-import pl.jzuber.songmate.persistance_layer.daos.UserDao;
+import pl.jzuber.songmate.persistence_layer.daos.UserDao;
 
 import java.util.LinkedList;
 import java.util.List;

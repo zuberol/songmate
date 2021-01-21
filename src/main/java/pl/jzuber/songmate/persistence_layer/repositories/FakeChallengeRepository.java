@@ -1,7 +1,8 @@
-package pl.jzuber.songmate.persistance_layer.repositories;
+package pl.jzuber.songmate.persistence_layer.repositories;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import pl.jzuber.songmate.model.challenges.Challenge;
 import pl.jzuber.songmate.utils.FakeChallengeGenerator;
 
@@ -18,7 +19,7 @@ public class FakeChallengeRepository extends ChallengeRepository {
     @Autowired
     public FakeChallengeRepository(FakeChallengeGenerator fakeChallengeGenerator) {
         this.challengeMap = new TreeMap<>();
-        fakeChallengeGenerator.generateRandChallengeList(30)
+        fakeChallengeGenerator.generateRandChallengeList(1)
                 .stream()
                 .filter(ch -> !challengeMap.containsKey(ch.getId()))
                 .forEach(ch -> challengeMap.put(ch.getId(), ch));

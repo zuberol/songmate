@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.google.common.collect.Streams;
 import org.springframework.beans.factory.annotation.Autowired;
 import pl.jzuber.songmate.exceptions.BuilderMethodNotFound;
 import pl.jzuber.songmate.exceptions.ChallengeClassNotKnown;
@@ -21,7 +20,6 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Consumer;
 
 public class CustomChallengeDeserializer extends JsonDeserializer<Challenge> {
 

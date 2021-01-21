@@ -57,14 +57,14 @@ public class FakeUserGenerator {
                                         .map(str -> str.trim().strip())
                                         .collect(Collectors.toList());
 
-        return User.builder().setUsername(userData.get(2))
-                .setPassword( userData.get(2) + String.valueOf(rand.nextInt()) )
-                .setAccountNonExpired(rand.nextBoolean())
-                .setAccountNonLocked(rand.nextBoolean())
-                .setEnabled(rand.nextBoolean())
-                .setCredentialsNonExpired(rand.nextBoolean())
-                .setRole( getRandomRoleSet() )
-                .setId(rand.nextLong() % 20)    //todo
+        return User.builder().username(userData.get(2))
+                .password( userData.get(2) + String.valueOf(rand.nextInt()) )
+                .isAccountNonExpired(rand.nextBoolean())
+                .isAccountNonLocked(rand.nextBoolean())
+                .isEnabled(rand.nextBoolean())
+                .isCredentialsNonExpired(rand.nextBoolean())
+                .role( getRandomRoleSet() )
+                .id(rand.nextLong() % 20)    //todo
                 .build();
     }
 

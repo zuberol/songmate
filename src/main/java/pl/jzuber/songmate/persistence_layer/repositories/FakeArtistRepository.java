@@ -1,6 +1,5 @@
-package pl.jzuber.songmate.persistance_layer.repositories;
+package pl.jzuber.songmate.persistence_layer.repositories;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import pl.jzuber.songmate.model.Artist;

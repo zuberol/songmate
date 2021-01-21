@@ -1,10 +1,9 @@
-package pl.jzuber.songmate.persistance_layer.daos;
+package pl.jzuber.songmate.persistence_layer.daos;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
-import pl.jzuber.songmate.persistance_layer.repositories.ChallengeRepository;
+import pl.jzuber.songmate.persistence_layer.repositories.ChallengeRepository;
 
 
 @Repository

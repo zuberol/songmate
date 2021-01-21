@@ -1,7 +1,7 @@
 package pl.jzuber.songmate.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import pl.jzuber.songmate.persistance_layer.daos.ChallengeDao;
+import pl.jzuber.songmate.persistence_layer.daos.ChallengeDao;
 
 public class MatchingService {
 

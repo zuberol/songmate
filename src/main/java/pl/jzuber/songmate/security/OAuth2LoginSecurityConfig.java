@@ -47,12 +47,12 @@ public class OAuth2LoginSecurityConfig extends WebSecurityConfigurerAdapter {
 ////                        .mvcMatchers("/app/artists").permitAll()
 //                        .anyRequest().authenticated()
 //                )
-                .authorizeRequests()
-                .antMatchers("/app/user/list").permitAll() // This will be your home screen URL
-                .antMatchers("/css/**").permitAll()
-                .antMatchers("/js/**").permitAll()
-                //.antMatchers("/app/**").authenticated()
-                .and()
+                .authorizeRequests(authorize -> authorize
+                        .antMatchers("/unsecured/**").permitAll() // This will be your home screen URL
+//                        .antMatchers("/css/**").permitAll()
+//                        .antMatchers("/js/**").permitAll()
+                        .antMatchers("/app**").authenticated()
+                )
                 .oauth2Client(oauth2 -> oauth2
                         .clientRegistrationRepository(this.clientRegistrationRepository())
 //                        .authorizedClientRepository(this.authorizedClientRepository())
@@ -63,8 +63,7 @@ public class OAuth2LoginSecurityConfig extends WebSecurityConfigurerAdapter {
 //                                .authorizationRequestResolver(this.authorizationRequestResolver())
 //                                .accessTokenResponseClient(this.accessTokenResponseClient())
 //                        )
-                )
-                .authorizeRequests().antMatchers("/app**").authenticated();
+                );
     }
 
 
@@ -157,12 +156,9 @@ public class OAuth2LoginSecurityConfig extends WebSecurityConfigurerAdapter {
                 .clientAuthenticationMethod(ClientAuthenticationMethod.BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .redirectUriTemplate(REDIRECT_URL)
-                .scope("user-read-email", "user-follow-read")
+                .scope("user-read-email", "user-follow-read", "user-read-private")
                 .authorizationUri(SPOTIFY_AUTH_URL)
                 .tokenUri(SPOTIFY_AUTH_TOKEN_URL)
-//                .userInfoUri("https://www.googleapis.com/oauth2/v3/userinfo")
-//                .userNameAttributeName(IdTokenClaimNames.SUB)
-//                .jwkSetUri("https://www.googleapis.com/oauth2/v3/certs")
                 .clientName("Spotify")
                 .build();
     }

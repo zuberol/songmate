@@ -1,4 +1,4 @@
-package pl.jzuber.songmate.persistance_layer.repositories;
+package pl.jzuber.songmate.persistence_layer.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import pl.jzuber.songmate.model.Artist;

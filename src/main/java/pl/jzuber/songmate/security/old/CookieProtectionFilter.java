@@ -1,4 +1,4 @@
-package pl.jzuber.songmate.security;
+package pl.jzuber.songmate.security.old;
 
 import javax.servlet.*;
 import javax.servlet.http.Cookie;

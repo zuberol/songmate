@@ -1,4 +1,4 @@
-package pl.jzuber.songmate.security;
+package pl.jzuber.songmate.security.old;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

@@ -1,13 +1,6 @@
-package pl.jzuber.songmate.persistance_layer.repositories;
+package pl.jzuber.songmate.persistence_layer.repositories;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
-import org.springframework.data.jpa.repository.support.CrudMethodMetadata;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import pl.jzuber.songmate.exceptions.NoUsersInDatabase;
 import pl.jzuber.songmate.exceptions.YouAskForToMuch;
@@ -19,7 +12,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Repository("fakeUserRepo")
-public class FakeUserRepository extends UserRepository {
+public class FakeUserRepository implements UserRepository {
 
     private Map<Long, User> userMap;
 
@@ -29,6 +22,12 @@ public class FakeUserRepository extends UserRepository {
         fakeUserGenerator.getUserList(20).stream()
                                                     .filter(user -> !userMap.containsKey(user.getId()))
                                                     .forEach(user -> userMap.put(user.getId(), user));
+    }
+
+    @Override
+    public List<User> findAllByOrderByIdAsc() {
+        System.out.println("returns empty stream class = " + this.getClass().getName());
+        return Collections.EMPTY_LIST;
     }
 
     @Override

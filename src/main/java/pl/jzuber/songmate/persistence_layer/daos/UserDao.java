@@ -1,18 +1,13 @@
-package pl.jzuber.songmate.persistance_layer.daos;
+package pl.jzuber.songmate.persistence_layer.daos;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
-import pl.jzuber.songmate.exceptions.NoUsersInDatabase;
-import pl.jzuber.songmate.exceptions.YouAskForToMuch;
+import org.springframework.transaction.annotation.Transactional;
 import pl.jzuber.songmate.model.User;
-import pl.jzuber.songmate.persistance_layer.repositories.UserRepository;
+import pl.jzuber.songmate.persistence_layer.repositories.UserRepository;
 
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 import java.util.stream.Stream;
 
 
@@ -26,7 +21,7 @@ public class UserDao {
     UserRepository userRepository;
 
     @Autowired //@Qualifier("psqlUserRepo")
-    public UserDao(@Qualifier("fakeUserRepo") UserRepository userRepository) {
+    public UserDao(@Qualifier("psqlUserRepo") UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
