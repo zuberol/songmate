@@ -48,6 +48,7 @@ class MsgPage extends Component {
                 'Content-Type': 'application/json'
             },
             body: spotifyAuthPrerequisite
+            
         })
         .then(res => console.log(`Backend responded with ${res.status} code.`))
         .catch(error => console.log(error));

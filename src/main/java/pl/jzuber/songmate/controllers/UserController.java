@@ -4,6 +4,7 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
@@ -13,6 +14,7 @@ import pl.jzuber.songmate.model.User;
 import pl.jzuber.songmate.services.UserService;
 
 import java.io.IOException;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/app/user")
@@ -29,7 +31,12 @@ public class UserController {
 
     @RequestMapping(value = "/me", method = RequestMethod.GET)
     public static com.wrapper.spotify.model_objects.specification.User
-        getCurrentUsersProfile_Sync(@RegisteredOAuth2AuthorizedClient("spotify") OAuth2AuthorizedClient authorizedClient) {
+        getCurrentUsersProfile_Sync(@RegisteredOAuth2AuthorizedClient("spotify") OAuth2AuthorizedClient authorizedClient,
+                                    @RequestHeader Map<String, String> headers) {
+
+        headers.forEach((key, value) -> {
+            System.out.println(String.format("Header '%s' = %s", key, value));
+        });
 
         System.out.println("user token is: " + authorizedClient.getAccessToken().getTokenValue());
         SpotifyApi spotifyApi = new SpotifyApi.Builder()
@@ -47,6 +54,25 @@ public class UserController {
 
         return new com.wrapper.spotify.model_objects.specification.User.Builder().build();
     }
+
+    @RequestMapping(value = "/fakeMe")
+    public User getUsername(@RequestHeader Map<String, String> headers, Authentication authentication) {
+        headers.forEach((key, value) -> {
+            System.out.println(String.format("Header '%s' = %s", key, value));
+        });
+        //System.out.println(authentication.isAuthenticated());
+        return User.builder().username("Jakubix").build();
+    }
+
+
+//    @RequestMapping("/fakeMe")
+//    public String fakeRedirection(@RequestHeader Map<String, String> headers) {
+//        headers.forEach((key, value) -> {
+//            System.out.println(String.format("Header '%s' = %s", key, value));
+//        });
+//        return "Jakubek";
+//    }
+
 
 
 }

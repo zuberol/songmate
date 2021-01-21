@@ -3,6 +3,12 @@
 -- pw must be a hash
 insert into users (username, password, is_account_non_locked, is_account_non_expired, enabled, is_credentials_non_expired)
 values ('tom', '$2a$10$ZS54pBP1HnDK2g.sVCtXXu0aylcoZsjeSca./wvhFtjfrRObvZRVm', 'TRUE', 'TRUE', 'TRUE', 'TRUE');
+insert into users (username, password, is_account_non_locked, is_account_non_expired, enabled, is_credentials_non_expired)
+values ('jerry', '$2a$10$ZS54pBP1HnDK2g.sVCtXXu0aylcoZsjeSca./wvhFtjfrRObvZRVm', 'TRUE', 'TRUE', 'TRUE', 'TRUE');
+insert into users (username, password, is_account_non_locked, is_account_non_expired, enabled, is_credentials_non_expired)
+values ('hannah', '$2a$10$ZS54pBP1HnDK2g.sVCtXXu0aylcoZsjeSca./wvhFtjfrRObvZRVm', 'TRUE', 'TRUE', 'TRUE', 'TRUE');
+insert into users (username, password, is_account_non_locked, is_account_non_expired, enabled, is_credentials_non_expired)
+values ('marvin', '$2a$10$ZS54pBP1HnDK2g.sVCtXXu0aylcoZsjeSca./wvhFtjfrRObvZRVm', 'TRUE', 'TRUE', 'TRUE', 'TRUE');
 
 
 

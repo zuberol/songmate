@@ -42,16 +42,19 @@ public class OAuth2LoginSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
+                .cors().disable()
 //                .authorizeRequests(authorize -> authorize
 ////                        .antMatchers("/app/artists").permitAll()
 ////                        .mvcMatchers("/app/artists").permitAll()
 //                        .anyRequest().authenticated()
 //                )
                 .authorizeRequests(authorize -> authorize
-                        .antMatchers("/unsecured/**").permitAll() // This will be your home screen URL
+//                                .antMatchers("/app/user/fakeMe").permitAll() // TODO delete that, after connecting back-and-front end
+                                .antMatchers("/unsecured/**").permitAll() // This will be your home screen URL
 //                        .antMatchers("/css/**").permitAll()
 //                        .antMatchers("/js/**").permitAll()
-                        .antMatchers("/app**").authenticated()
+                                .antMatchers("/app**").authenticated()
+                                .anyRequest().authenticated()
                 )
                 .oauth2Client(oauth2 -> oauth2
                         .clientRegistrationRepository(this.clientRegistrationRepository())
