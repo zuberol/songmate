@@ -2,6 +2,7 @@ import { Component } from 'react';
 import MessageBox from '../components/MessageBox';
 
 class MsgPage extends Component {
+    state = {}
     render() {
         return (
             <div>

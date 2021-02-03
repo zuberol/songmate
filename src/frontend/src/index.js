@@ -2,19 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import './index.css';
 import reportWebVitals from './reportWebVitals';
-import App from './App.js'
+import Routes from './Routes.js'
 import { BrowserRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <div className="BoxesWrapper">
-        <App/>
-      </div>
-    </BrowserRouter>
+    <React.StrictMode>
+        <BrowserRouter>
+            <CookiesProvider>
+                <Routes />
+            </CookiesProvider>
+        </BrowserRouter>
 
-  </React.StrictMode>,
-  document.getElementById('root')
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

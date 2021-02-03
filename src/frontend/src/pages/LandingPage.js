@@ -1,119 +1,72 @@
 import { Component } from 'react';
-import "./../static/css/mains.css";
+import "../static/css/mains.css";
+import logo from '../static/images/logo.svg'
 
 class MsgPage extends Component {
 
     authViaSpotify() {
-        console.log("Connecting to Spotify");
-
-        const authURLParams = {
-            client_id: "86594ad446164e8ba2b311639e5d60a6",
-            response_type: "code",
-            redirect_uri: "http://localhost:3000",
-            scope: "user-read-email user-follow-read",
-            state: "34fFs29kd09csrfRandomprotectionString",
-            show_dialog: true
-        }
-        const spotifyAuthURL = new URL("https://accounts.spotify.com/authorize");
-        Object.entries(authURLParams).forEach(pair => {
-            spotifyAuthURL.searchParams.append(pair[0], pair[1]);
-        });
-        console.log(spotifyAuthURL.toString())
-        // url.searchParams.forEach(p => console.log(p));
-        // const spotifyAuthURL = `https://accounts.spotify.com/authorize?client_id=5fe01282e44241328a84e7c5cc169165&response_type=code&redirect_uri=https%3A%2F%2Fexample.com%2Fcallback&scope=user-read-private%20user-read-email&state=34fFs29kd09`;
-
-        window.location.replace(spotifyAuthURL);
-
-        // fetch(spotifyAuthURL, {
-        //     method: "GET",
-        //     mode: 'no-cors'
-        // })
-        // .then(res => console.log(res.body))
-        // .catch(error => console.log(error))
+        window.location.replace("http://localhost:8080/");
     }
 
     componentDidMount() {
-        const CURRENT_PAGE_URL = new URL(window.location.href);
-        console.log(CURRENT_PAGE_URL.toString());
-        if(CURRENT_PAGE_URL.searchParams.get("code") == null || CURRENT_PAGE_URL.searchParams.get("state") == null) return;
-        const BACKEND_SERVER_URL = "http://localhost:8080/auth/spotifyAuthPrerequisite";
-        const spotifyAuthPrerequisite = JSON.stringify({
-            CODE: CURRENT_PAGE_URL.searchParams.get("code"),
-            STATE: CURRENT_PAGE_URL.searchParams.get("state")
-        });
-        fetch(BACKEND_SERVER_URL, {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: spotifyAuthPrerequisite
-            
+        fetch("http://localhost:8080/username1", {
+            method: "GET",
+            mode: "no-cors",
+            credentials: "include"
         })
-        .then(res => console.log(`Backend responded with ${res.status} code.`))
-        .catch(error => console.log(error));
+            // .then(res => res.json())
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
     }
-    
+
+    loginSpotify() {
+        window.location.replace("http://localhost:8080");
+    }
+
+    logout() {
+        window.location.replace("http://localhost:8080/logout");
+    }
+
+
     render() {
         return (
             <div>
-                <div className="main-wrapper">
-                    <div className="buttons">
-                        <h1>Authorize and start using this app</h1>
-                        <button className="btn spotify-btn" onClick={this.authViaSpotify}>Use Spotify</button>
-
-
-
-
-
-
-                        <div className="main-nav">
-                            <img src="images/logo.png" className="logo" alt={""}/>
-                            <span className="main-nav__title">Songmate</span>
+                <div className="fullscreen-banner">
+                    <div className="logo__opaque">
+                        <div className="logo__circular-background">
+                            <img className="logo__svg" src={logo} alt="icon not found"></img>
                         </div>
-
-                        <div className="background-div-one spotify-font__heading">
-                            <div className="main-wrapper-one">
-                                <p>Find people who value your taste</p>
-                            </div>
-                        </div>
-                        <div className="black-background spotify-font__paragraph">
-                            <h1>Some heading</h1>
-                            <p>Some information about this app.</p>
-                        </div>
-                        <div className="background-div-two spotify-font__heading">
-                            <div className="main-wrapper-two">
-                                <p>Find jamming mate</p>
-                            </div>
-                        </div>
-                        <div className="black-background spotify-font__paragraph">
-                            <h1>Our algorithm</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </div>
-                        <div className="background-div-three">
-                            <div className="main-wrapper-three">
-                                <p className="spotify-font__heading">Get music recommendation from people who know what you like</p>
-                            </div>
-                        </div>
-
-                        <footer className="main-footer">
-                            <span>Icons made by <a href="https://www.flaticon.com/free-icon/sound_865548" title="Good Ware">Good Ware</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></span>
-                            <span>Project by JŻ & KK</span>
-                        </footer>
-
-
-
-
+                        <h4 className="logo__title">Songmate</h4>
                     </div>
                 </div>
+                <div className="orange-background">
+                    <h3>Show others your passion</h3>
+                    <p>Pellentesque a tincidunt leo, at aliquet odio. Nam maximus sit amet nibh vel posuere. Nullam egestas ex vitae ante molestie, ut ullamcorper libero euismod. Suspendisse potenti. Sed quis velit urna. Quisque odio nisl, iaculis sit amet mi sit amet, sodales vestibulum augue. Integer metus ex, finibus eget efficitur sed, pulvinar quis ex.</p>
+                </div>
+                <div className="background-div-one">
+                    <span className="flipElementBefore"></span>
+                    <h2 className="header-shadow"><span>Find people who value your taste</span></h2>
+                </div>
+                <div className="black-background">
+                    <h3>Be up to date about musical events</h3>
+                    <p>Aliquam erat volutpat. Vestibulum cursus sollicitudin condimentum. Quisque a dolor urna. Vivamus vitae dolor sodales, euismod tellus vel, tempus lacus. Sed eu vulputate sem. Vivamus luctus velit eu urna semper, nec tempor tortor auctor.</p>
+                </div>
+                <div className="background-div-two">
+                    <h2 className="header-shadow"><span>Find jamming mate</span></h2>
+                </div>
+                <div className="black-background">
+                    <h3>Our algorithm</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+                <div className="background-div-three">
+                    <h2 className="header-shadow"><span>Get music recommendation from people who know what you like</span></h2>
+                </div>
+                <footer className="main-footer">
+                    <span>Project by JŻ</span>
+                </footer>
             </div>
-
-
         )
     }
 }
-
-
-
 
 export default MsgPage;

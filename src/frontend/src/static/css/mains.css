@@ -1,21 +1,27 @@
-* {
-    box-sizing: border-box;
-    /*font-family: Circular, Helvetica, Arial, sans-serif, IosFix;*/
-    font-family: 'Courier New';
-}
-
 @font-face {
     font-family: Circular;
     src: url('./../fonts/Circular.otf');
     font-weight: bold;
 }
 
-p, a {
-    padding: 0;
-    margin: 0;
-    font-family: Circular;
-    text-decoration: none;
-    color: inherit;
+@keyframes fading-effect {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+* {
+    box-sizing: border-box;
+    font-family: Circular, Helvetica, Arial, 'Courier New';
 }
 
 body {
@@ -23,27 +29,86 @@ body {
     margin: 0;
     padding: 0;
     color: whitesmoke;
+    font-size: 17px;
+}
+
+p {
+    color: inherit;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    text-align: justify;
+    padding: 1rem;
+    margin: 0;
+}
+
+a {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+    padding: 1rem;
+    margin: 0;
 }
 
 h1 {
-    margin: 0;
-    padding: 0;
-    text-transform: uppercase;
-    font-family: 'Courier New';
+    font-size: 5rem;
 }
 
-.main-nav {
-    min-height: 50px;
-    background-color: #1DB954;
-    position: relative;
-    color: whitesmoke;
-    font-size: 1.5rem;
-    padding: 10px;
+h2 {
+    font-size: 3.5rem;
+}
 
+h3 {
+    font-size: 3rem;
+}
+
+h4 {
+    font-size: 2.5rem;
+}
+
+.fullscreen-banner {
+    min-height: 120vh;
+    min-width: 100vw;
+    padding-bottom: 30vh;
+    background-image: url('../images/aleksandar-pasaric-2078076.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
+    justify-content: center;
+    /* animation: fading-effect 2s ease-in 0s; */
 }
 
+.logo__opaque {
+    max-width: 200px;
+}
+
+.logo__circular-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(29, 185, 84, 0.8);
+    border-radius: 20% 20% 20% 20%;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    font-size: 12px;
+
+}
+
+.logo__svg {
+    filter: invert(1);
+}
+
+.logo__title {
+    display: flex;
+    justify-content: center;
+    text-shadow: black 1px 0 10px;
+}
 
 .logo {
     width: 40px;
@@ -55,26 +120,60 @@ h1 {
     background: rgba(0, 0, 0, 0.7);
 }
 
-.main-nav__title {
-    font-size: 2rem;
-    margin-right: 10px;
+.background-div-one,
+.background-div-two,
+.background-div-three {
+    min-height: 100vh;
+    min-width: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.background-div-one {
+    background-image: url('https://images.unsplash.com/photo-1516108759901-daf1a20f9281?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+    background-position: 40% 50%;
+}
+
+span.flipElementBefore::before {
+    /* transform: scaleX(-1); */
+}
+
+.background-div-two {
+    background-image: url('./../images/image-flipped.jpg');
+    background-position: 70% 50%;
+}
+
+.background-div-three {
+    background-image: url('./../images/pexels-sofia-garza-3007347.jpg');
+    background-position: 40% 50%;
+}
+
+.header-shadow span {
+    background-color: rgba(0, 0, 0, 0.7);
+    -webkit-box-decoration-break:clone;
+    -moz-box-decoration-break:clone;
+    box-decoration-break: clone;
+    line-height: 4.8rem;
+    padding-left: 1rem;
+    padding-right: 0.7rem;
+
 }
 
 
-.main-wrapper {
-    box-sizing: border-box;
-    width: 50%;
-    padding: 20px;
-    margin: auto;
-    margin-top: 40px;
-    vertical-align: center;
 
-    /*TO CHANGE*/
-    background: linear-gradient(0deg, #f6cb6c 20%, #f3c65d 65%, #f2ae54 100%);
+.black-background {
+    background-color: black;
+    padding: 1rem;
+    padding-bottom: 3rem;
 }
 
+.orange-background {
+    background-color: rgb(236, 168, 69);
+    padding: 1rem;
+    padding-bottom: 3rem;
+}
 
-.btn, .spotify-btn, .fb-btn {
+.spotify-btn {
     font-size: 11px;
     line-height: 1;
     border-radius: 500px;
@@ -101,120 +200,35 @@ h1 {
     text-transform: uppercase;
 
     text-align: center;
-
     align-items: center;
 
 
 }
 
-.spotify-btn {
-    background-color: #1DB954;
-}
-
-.fb-btn {
-    background-color: #385898;
-    box-shadow: black;
-}
 
 
-@keyframes fading-effect {
-    0% {
-        opacity: 0;
-    }
-
-    50% {
-        opacity: 0.5;
-    }
-
-    100% {
-        opacity: 1;
-    }
-
-}
-
-
-.background-div-three {
-    background-image: url('./../images/pexels-sofia-garza-3007347.jpg');
-    background-size: 130%;
-    background-repeat: no-repeat;
-    background-position: 0% 0%;
-
-    animation: fading-effect 2s ease-in 0s;
-
-    width: 100vw;
-    height: 70vh;
-    min-height: 70vh;
-
-}
-
-
-.main-wrapper-three {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 50px;
-    background: rgba(0, 0, 0, 0.7);
-
-
-}
-
-.background-div-one,
-.background-div-two {
-    display: block;
-    background-position: 0% 0%;
-/*    transition: opacity 1s ease-in-out;
-    animation: 4s ease-out 0s 1 fading-effect; */
-    background-repeat: no-repeat;
-    width: 100%;
-    height: auto;
-}
-
-.background-div-one {
-    background-image: url('./../images/aleksandar-pasaric-2078076.jpg');
-    /*'https://images.pexels.com/photos/3007347/pexels-photo-3007347.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'*/
-    background-size: 130%;
-}
-
-.background-div-two {
-    background-image: url('./../images/image-flipped.jpg');
-    /*https://images.unsplash.com/photo-1557511113-84fb922d34d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1216&q=80*/
-    background-size: 130%;
-}
-/*
-https://images.unsplash.com/photo-1503853585905-d53f628e46ac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=633&q=80
-https://images.unsplash.com/photo-1516108759901-daf1a20f9281?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80
-*/
-
-.spotify-font__heading,
-.spotify-font__paragraph   {
-    text-transform: uppercase;
-    font-family: Circular, 'Courier New', Courier, monospace;
-    color: whitesmoke;
-}
-
-.spotify-font__heading {
-    text-transform: uppercase;
-    font-weight: 300;
-    font-size: 3rem;
-}
-.spotify-font__paragraph {
-    font-size: 1rem;
-}
-
-.black-background {
+footer {
+    height: 130px;
     background-color: black;
-    width: auto;
-    height: 400px;
-    margin: 0;
-    padding: 50px;
-}
-
-.main-footer {
-    width: 100%;
-    height: 150px;
-    background-color: black;
-
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+
+
+
+
+@media (min-width: 700px) {
+    body {
+        font-size: 11px;
+    }
+}
+
+
+/*
+https://images.unsplash.com/photo-1503853585905-d53f628e46ac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=633&q=80
+https://images.unsplash.com/photo-1516108759901-daf1a20f9281?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80
+*/
+/*https://images.unsplash.com/photo-1557511113-84fb922d34d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1216&q=80*/
+/*'https://images.pexels.com/photos/3007347/pexels-photo-3007347.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'*/
