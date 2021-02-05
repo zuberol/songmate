@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import ChallengeBox from './../components/ChallengeBox';
+import ChallengeBox from './../common/ChallengeBox.js';
 
 class ChallengePage extends Component {
     render() {

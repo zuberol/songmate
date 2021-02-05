@@ -1,4 +1,4 @@
-package pl.jzuber.songmate.model.challenges;
+package pl.jzuber.songmate.model.challenges.example;
 
 
 import lombok.AllArgsConstructor;

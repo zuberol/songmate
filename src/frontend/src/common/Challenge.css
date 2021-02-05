@@ -1,0 +1,41 @@
+.ChallengeBoxWrapper {
+    background-color: salmon;
+    padding: 20px;
+    height: 100%;
+}
+
+.challengeButtonWrapper {
+    padding: 20px;
+    text-align: center;
+}
+
+.challengeButton {
+    display: inline-block;
+    border-radius: 50%;
+    font-size: 3rem;
+    text-align: center;
+    padding: 0px 0px;
+    margin: 0px 40px;
+    border:1px solid #BFBFBF;
+    background-color: #FCFAF9;
+    outline: none;
+    width: 70px;
+    height: 70px;
+}
+
+
+.challengeButton:hover, .challengeButton:active, .challengeButton:active{
+    border:1px solid #BFBFBF;
+    color: #8C8C8C;
+    background-color: #E8E8E8;
+}
+
+
+.Player {
+    max-width: 100%;
+    border-radius: 20px;
+}
+
+.PlayerWrapper {
+    padding: 10px 10px;
+}

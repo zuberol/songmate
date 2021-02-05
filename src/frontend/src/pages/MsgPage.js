@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import MessageBox from '../components/MessageBox';
+import MessageBox from './../common/MessageBox';
 
 class MsgPage extends Component {
     state = {}

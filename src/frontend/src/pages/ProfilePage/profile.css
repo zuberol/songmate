@@ -1,0 +1,55 @@
+body {
+    background: radial-gradient(ellipse at center, #f6cb6c 0%, #f3c65d 0%, #f2ae54 100%);
+}
+
+.page-content {
+    padding: 2.5rem;
+    margin: auto;
+    background: radial-gradient(ellipse at center, rgb(60, 60, 60) 0%,rgb(40, 41, 44) 100%);
+    width: 60vw;
+    min-width: 500px;
+    min-height: 100vh;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile__info {
+
+}
+
+.profile__picture {
+    width: 13rem;
+    height: 13rem;
+}
+
+.album-cover {
+    width: 13rem;
+    height: 13rem;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    background-size: cover;
+    background-position: center;
+    padding: 1rem;
+    margin: 1rem;
+}∂
+
+.album-cover > p {
+    text-align: left;
+    vertical-align: center;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 1);
+}
+.albums-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.albums-grid__articles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+

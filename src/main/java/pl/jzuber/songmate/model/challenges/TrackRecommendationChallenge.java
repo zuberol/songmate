@@ -13,11 +13,11 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 @SuperBuilder
-public class TrackRecomendationChallenge extends Challenge {
+public final class TrackRecommendationChallenge extends Challenge {
 
     String youTubeVideoId;
 
-    public TrackRecomendationChallenge(Long id, String challengeName, User addressee, User recipient, String youTubeVideoId) {
+    public TrackRecommendationChallenge(Long id, String challengeName, User addressee, User recipient, String youTubeVideoId) {
         super(id, challengeName, addressee, recipient);
         this.youTubeVideoId = youTubeVideoId;
     }

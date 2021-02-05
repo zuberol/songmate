@@ -1,144 +1,37 @@
 package pl.jzuber.songmate.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.oauth2.client.*;
-import org.springframework.security.oauth2.client.endpoint.DefaultAuthorizationCodeTokenResponseClient;
-import org.springframework.security.oauth2.client.endpoint.OAuth2AccessTokenResponseClient;
-import org.springframework.security.oauth2.client.endpoint.OAuth2AuthorizationCodeGrantRequest;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
+import org.springframework.security.oauth2.client.InMemoryOAuth2AuthorizedClientService;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
-import org.springframework.security.oauth2.client.web.*;
+import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
-import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
-import org.springframework.security.oauth2.core.oidc.IdTokenClaimNames;
-
-import static org.springframework.security.config.Customizer.withDefaults;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Configuration
 @EnableWebSecurity
 public class OAuth2LoginSecurityConfig extends WebSecurityConfigurerAdapter {
-
-
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//
-//        http
-//                .authorizeRequests((authorizeRequests) ->
-//                        authorizeRequests
-//                                .anyRequest().authenticated()
-//                )
-//                .oauth2Client(withDefaults());
-//    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-
-        http
-                .cors().disable()
-//                .authorizeRequests(authorize -> authorize
-////                        .antMatchers("/app/artists").permitAll()
-////                        .mvcMatchers("/app/artists").permitAll()
-//                        .anyRequest().authenticated()
-//                )
-                .authorizeRequests(authorize -> authorize
-//                                .antMatchers("/app/user/fakeMe").permitAll() // TODO delete that, after connecting back-and-front end
-                                .antMatchers("/unsecured/**").permitAll() // This will be your home screen URL
-//                        .antMatchers("/css/**").permitAll()
-//                        .antMatchers("/js/**").permitAll()
-                                .antMatchers("/app**").authenticated()
-                                .anyRequest().authenticated()
-                )
-                .oauth2Client(oauth2 -> oauth2
-                        .clientRegistrationRepository(this.clientRegistrationRepository())
-//                        .authorizedClientRepository(this.authorizedClientRepository())
-//                        .authorizedClientService(this.authorizedClientService())
-                                .authorizationCodeGrant(withDefaults())
-//                        .authorizationCodeGrant(codeGrant -> codeGrant.
-//                                .authorizationRequestRepository(this.authorizationRequestRepository())
-//                                .authorizationRequestResolver(this.authorizationRequestResolver())
-//                                .accessTokenResponseClient(this.accessTokenResponseClient())
-//                        )
-                );
-    }
-
-
-//
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .requestMatchers()
-//                .antMatchers("/api/**")
-//                .and()
-//                .requestMatchers()
-//                .antMatchers("/oauth/**")
-//                .and()
-//                .authorizeRequests()
-//                .antMatchers("/**").hasRole("USER")
-//                .and()
-//                .httpBasic();
-//    }
-//
-//
-//
-//
-
-
-
-
-
-
-
-//    @Bean
-//    public OAuth2AuthorizedClientService authorizedClientService(
-//            ClientRegistrationRepository clientRegistrationRepository) {
-//        return new InMemoryOAuth2AuthorizedClientService(clientRegistrationRepository);
-//    }
-//
-//    @Bean
-//    public OAuth2AuthorizedClientRepository authorizedClientRepository(
-//            OAuth2AuthorizedClientService authorizedClientService) {
-//        return new AuthenticatedPrincipalOAuth2AuthorizedClientRepository(authorizedClientService);
-//    }
-
-//    @Bean
-//    public OAuth2AuthorizedClientManager authorizedClientManager(
-//            ClientRegistrationRepository clientRegistrationRepository,
-//            OAuth2AuthorizedClientRepository authorizedClientRepository) {
-//
-//        OAuth2AuthorizedClientProvider authorizedClientProvider =
-//                OAuth2AuthorizedClientProviderBuilder.builder()
-//                        .authorizationCode()
-//                        .refreshToken()
-//                        .clientCredentials()
-//                        .password()
-//                        .build();
-//
-//        DefaultOAuth2AuthorizedClientManager authorizedClientManager =
-//                new DefaultOAuth2AuthorizedClientManager(
-//                        clientRegistrationRepository, authorizedClientRepository);
-//        authorizedClientManager.setAuthorizedClientProvider(authorizedClientProvider);
-//
-//        return authorizedClientManager;
-//    }
-
-        //co sie stanie po udanej Autoryzacji
-//    setAuthorizationSuccessHandler(OAuth2AuthorizationSuccessHandler) and setAuthorizationFailureHandler(OAuth2AuthorizationFailureHandler).
-
-
-
-
-
-
-
-
 
     final static String REGISTRATION_ID = "spotify";
     final static String CLIENT_ID = "86594ad446164e8ba2b311639e5d60a6";
@@ -146,23 +39,82 @@ public class OAuth2LoginSecurityConfig extends WebSecurityConfigurerAdapter {
     final static String SPOTIFY_AUTH_URL = "https://accounts.spotify.com/authorize";
     final static String SPOTIFY_AUTH_TOKEN_URL = "https://accounts.spotify.com/api/token";
     final static String REDIRECT_URL = "{baseUrl}/{action}/oauth2/code/{registrationId}";   //"http://localhost:3000";
+    final static String USER_INFO_URL = "https://api.spotify.com/v1/me";
+    final static String NAME_ATRIBUTE_NAME = "display_name";
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+
+        http
+                .cors().and()
+                .csrf()
+                    .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()   //todo doczytac XSRF-TOKEN
+                .authorizeRequests(authorize -> authorize
+                        .anyRequest().authenticated()
+                )
+                .oauth2Login(login -> login
+                        .clientRegistrationRepository(this.clientRegistrationRepository())
+                        .successHandler(this.customAuthenticationSuccessHandler())
+                        .failureHandler(this.customAuthenticationFailureHandler())
+                        .userInfoEndpoint(userInfo -> userInfo
+                                .userAuthoritiesMapper(authorities -> authorities
+                                        .stream()
+                                        .map(SpotifyAuthority::new)
+                                        .collect(Collectors.toList())
+                                )
+                        )
+                )
+                .logout(logout -> logout
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                        .logoutSuccessUrl("http://localhost:3000")
+                        .addLogoutHandler(new SecurityContextLogoutHandler())
+                        .deleteCookies("JSESSIONID")
+                );
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler customAuthenticationSuccessHandler(){
+        return new SimpleUrlAuthenticationSuccessHandler("http://localhost:3000/app");
+    }
+
+    @Bean
+    public AuthenticationFailureHandler customAuthenticationFailureHandler(){
+        return new SimpleUrlAuthenticationFailureHandler("http://localhost:3000/error");
+    }
 
     @Bean
     public ClientRegistrationRepository clientRegistrationRepository() {
         return new InMemoryClientRegistrationRepository(this.spotifyClientRegistration());
     }
 
-    private ClientRegistration spotifyClientRegistration() {
+    @Bean
+    public OAuth2AuthorizedClientService authorizedClientService(
+            ClientRegistrationRepository clientRegistrationRepository) {
+        return new InMemoryOAuth2AuthorizedClientService(clientRegistrationRepository);
+    }
+
+//      todo nie trzeba, bo chyba jest inmemory z defaultu, Yes
+//    @Bean
+//    public OAuth2AuthorizedClientRepository authorizedClientRepository(
+//            OAuth2AuthorizedClientService authorizedClientService) {
+//        return new AuthenticatedPrincipalOAuth2AuthorizedClientRepository(authorizedClientService);
+//    }
+//
+
+    @Bean
+    public ClientRegistration spotifyClientRegistration() {
         return ClientRegistration.withRegistrationId(REGISTRATION_ID)
                 .clientId(CLIENT_ID)
                 .clientSecret(CLIENT_SECRET)
                 .clientAuthenticationMethod(ClientAuthenticationMethod.BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .redirectUriTemplate(REDIRECT_URL)
-                .scope("user-read-email", "user-follow-read", "user-read-private")
+                .scope("user-read-email", "user-follow-read", "user-read-private","user-top-read")
                 .authorizationUri(SPOTIFY_AUTH_URL)
                 .tokenUri(SPOTIFY_AUTH_TOKEN_URL)
+                .userInfoUri(USER_INFO_URL)
                 .clientName("Spotify")
+                .userNameAttributeName(NAME_ATRIBUTE_NAME)
                 .build();
     }
 
