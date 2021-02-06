@@ -11,7 +11,7 @@ import pl.jzuber.songmate.exceptions.JsonPropertyNotMatched;
 import pl.jzuber.songmate.exceptions.NotBuilderClass;
 import pl.jzuber.songmate.model.challenges.Challenge;
 import pl.jzuber.songmate.model.challenges.SendMeSongChallenge;
-import pl.jzuber.songmate.services.ChallengeService;
+import pl.jzuber.songmate.services.DiscoveryService.DiscoveryService;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -23,11 +23,11 @@ import java.util.Optional;
 
 public class CustomChallengeDeserializer extends JsonDeserializer<Challenge> {
 
-    ChallengeService challengeService;
+    DiscoveryService discoveryService;
 
     @Autowired
-    public CustomChallengeDeserializer(ChallengeService challengeService) {
-        this.challengeService = challengeService;
+    public CustomChallengeDeserializer(DiscoveryService discoveryService) {
+        this.discoveryService = discoveryService;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class CustomChallengeDeserializer extends JsonDeserializer<Challenge> {
         try {
             final String challengeName = root.get("challengeName").textValue();
             String challengeFullClassName = Optional.ofNullable(challengeName)
-                                                    .map(ch -> challengeService.challengeMap.get(ch))
+                                                    .map(ch -> discoveryService.challengeMap.get(ch))
                                                     .orElseThrow(ChallengeClassNotKnown::new);
             Class<?> theClass = Class.forName(challengeFullClassName);
 

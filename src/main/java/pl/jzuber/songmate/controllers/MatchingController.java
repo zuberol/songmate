@@ -1,6 +1,7 @@
 package pl.jzuber.songmate.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;
 import pl.jzuber.songmate.model.challenges.Challenge;
 import pl.jzuber.songmate.model.challenges.SendMeSongChallenge;
@@ -21,7 +22,7 @@ public class MatchingController {
         this.challengeDao = challengeDao;
     }
 
-    @PostMapping("/custom")
+    @PostMapping("/custom") /* TODO czy da sie to zapisywac do db, czy to ma sens byc takie*/
     public Challenge customController(@RequestBody Challenge challenge) throws Exception {
         if (challenge.getClass().getName() == "pl.jzuber.songmate.model.challenges.SendMeSongChallenge") {
             System.out.println("\n"+(SendMeSongChallenge)challenge);
@@ -31,8 +32,15 @@ public class MatchingController {
     }
 
     @GetMapping(value = "/getChallenge", produces = {"application/json"})
-    public Challenge customController() {
-        return new TrackRecommendationChallenge(new Random().nextLong(), "TrackRecomendationChallenge", null, null, "6AH462-zuIg");
+    @Profile("dev")
+    public Challenge getMockChallenge() {
+        return new TrackRecommendationChallenge(
+                new Random().nextLong(),
+                "TrackRecomendationChallenge",
+                null,
+                null,
+                "6AH462-zuIg"
+        );
     }
 
 

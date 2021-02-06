@@ -5,20 +5,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
 import org.springframework.security.oauth2.client.InMemoryOAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
-import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
-import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
-import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
-import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
@@ -26,19 +19,19 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationSu
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import java.util.*;
+
 import java.util.stream.Collectors;
 
 @Configuration
 @EnableWebSecurity
-public class OAuth2LoginSecurityConfig extends WebSecurityConfigurerAdapter {
+public class SpotifyOAuth2Config extends WebSecurityConfigurerAdapter {
 
-    final static String REGISTRATION_ID = "spotify";
+    final static String REGISTRATION_ID = "spotify";    // TODO do INNEGO pliku
     final static String CLIENT_ID = "86594ad446164e8ba2b311639e5d60a6";
     final static String CLIENT_SECRET = "e80c65abbc85467aafa35b762fc8832f";
     final static String SPOTIFY_AUTH_URL = "https://accounts.spotify.com/authorize";
     final static String SPOTIFY_AUTH_TOKEN_URL = "https://accounts.spotify.com/api/token";
-    final static String REDIRECT_URL = "{baseUrl}/{action}/oauth2/code/{registrationId}";   //"http://localhost:3000";
+    final static String REDIRECT_URL = "{baseUrl}/{action}/oauth2/code/{registrationId}";
     final static String USER_INFO_URL = "https://api.spotify.com/v1/me";
     final static String NAME_ATRIBUTE_NAME = "display_name";
 
@@ -92,14 +85,6 @@ public class OAuth2LoginSecurityConfig extends WebSecurityConfigurerAdapter {
             ClientRegistrationRepository clientRegistrationRepository) {
         return new InMemoryOAuth2AuthorizedClientService(clientRegistrationRepository);
     }
-
-//      todo nie trzeba, bo chyba jest inmemory z defaultu, Yes
-//    @Bean
-//    public OAuth2AuthorizedClientRepository authorizedClientRepository(
-//            OAuth2AuthorizedClientService authorizedClientService) {
-//        return new AuthenticatedPrincipalOAuth2AuthorizedClientRepository(authorizedClientService);
-//    }
-//
 
     @Bean
     public ClientRegistration spotifyClientRegistration() {

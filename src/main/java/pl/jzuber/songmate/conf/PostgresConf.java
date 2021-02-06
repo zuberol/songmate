@@ -48,10 +48,4 @@ public class PostgresConf implements WebMvcConfigurer {
         return jdbcDaoImpl;
     }
 
-
-//    @Override   //todo delete that, learn CORS
-//    public void addCorsMappings(CorsRegistry registry) {
-//        registry.addMapping("/**").allowedMethods("*");
-//    }
-
 }

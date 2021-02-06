@@ -1,7 +1,8 @@
-package pl.jzuber.songmate.services;
+package pl.jzuber.songmate.services.MatchingService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import pl.jzuber.songmate.persistence_layer.daos.ChallengeDao;
+import pl.jzuber.songmate.services.UserService;
 
 public class MatchingService {
 
@@ -13,11 +14,5 @@ public class MatchingService {
         this.userService = userService;
         this.challengeDao = challengeDao;
     }
-
-
-
-
-
-
 
 }
