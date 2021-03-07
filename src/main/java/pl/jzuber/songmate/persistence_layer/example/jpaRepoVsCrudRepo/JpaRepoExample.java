@@ -5,30 +5,30 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.jzuber.songmate.model.User;
+import pl.jzuber.songmate.model.SongmateUser;
 
 import java.util.List;
 import java.util.Optional;
 
-public class JpaRepoExample implements JpaRepository<User, Long> {
+public class JpaRepoExample implements JpaRepository<SongmateUser, Long> {
 
     @Override
-    public List<User> findAll() {
+    public List<SongmateUser> findAll() {
         return null;
     }
 
     @Override
-    public List<User> findAll(Sort sort) {
+    public List<SongmateUser> findAll(Sort sort) {
         return null;
     }
 
     @Override
-    public Page<User> findAll(Pageable pageable) {
+    public Page<SongmateUser> findAll(Pageable pageable) {
         return null;
     }
 
     @Override
-    public List<User> findAllById(Iterable<Long> iterable) {
+    public List<SongmateUser> findAllById(Iterable<Long> iterable) {
         return null;
     }
 
@@ -43,12 +43,12 @@ public class JpaRepoExample implements JpaRepository<User, Long> {
     }
 
     @Override
-    public void delete(User user) {
+    public void delete(SongmateUser songmateUser) {
 
     }
 
     @Override
-    public void deleteAll(Iterable<? extends User> iterable) {
+    public void deleteAll(Iterable<? extends SongmateUser> iterable) {
 
     }
 
@@ -58,17 +58,17 @@ public class JpaRepoExample implements JpaRepository<User, Long> {
     }
 
     @Override
-    public <S extends User> S save(S s) {
+    public <S extends SongmateUser> S save(S s) {
         return null;
     }
 
     @Override
-    public <S extends User> List<S> saveAll(Iterable<S> iterable) {
+    public <S extends SongmateUser> List<S> saveAll(Iterable<S> iterable) {
         return null;
     }
 
     @Override
-    public Optional<User> findById(Long aLong) {
+    public Optional<SongmateUser> findById(Long aLong) {
         return Optional.empty();
     }
 
@@ -83,12 +83,12 @@ public class JpaRepoExample implements JpaRepository<User, Long> {
     }
 
     @Override
-    public <S extends User> S saveAndFlush(S s) {
+    public <S extends SongmateUser> S saveAndFlush(S s) {
         return null;
     }
 
     @Override
-    public void deleteInBatch(Iterable<User> iterable) {
+    public void deleteInBatch(Iterable<SongmateUser> iterable) {
 
     }
 
@@ -98,37 +98,37 @@ public class JpaRepoExample implements JpaRepository<User, Long> {
     }
 
     @Override
-    public User getOne(Long aLong) {
+    public SongmateUser getOne(Long aLong) {
         return null;
     }
 
     @Override
-    public <S extends User> Optional<S> findOne(Example<S> example) {
+    public <S extends SongmateUser> Optional<S> findOne(Example<S> example) {
         return Optional.empty();
     }
 
     @Override
-    public <S extends User> List<S> findAll(Example<S> example) {
+    public <S extends SongmateUser> List<S> findAll(Example<S> example) {
         return null;
     }
 
     @Override
-    public <S extends User> List<S> findAll(Example<S> example, Sort sort) {
+    public <S extends SongmateUser> List<S> findAll(Example<S> example, Sort sort) {
         return null;
     }
 
     @Override
-    public <S extends User> Page<S> findAll(Example<S> example, Pageable pageable) {
+    public <S extends SongmateUser> Page<S> findAll(Example<S> example, Pageable pageable) {
         return null;
     }
 
     @Override
-    public <S extends User> long count(Example<S> example) {
+    public <S extends SongmateUser> long count(Example<S> example) {
         return 0;
     }
 
     @Override
-    public <S extends User> boolean exists(Example<S> example) {
+    public <S extends SongmateUser> boolean exists(Example<S> example) {
         return false;
     }
 }

@@ -2,7 +2,7 @@ package pl.jzuber.songmate.persistence_layer.repositories;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
-import pl.jzuber.songmate.model.Artist;
+import pl.jzuber.songmate.model.SongmateArtist;
 
 import java.util.Optional;
 
@@ -10,17 +10,17 @@ import java.util.Optional;
 @Profile("dev")
 public class FakeArtistRepository implements ArtistRepository {
     @Override
-    public <S extends Artist> S save(S s) {
+    public <S extends SongmateArtist> S save(S s) {
         return null;
     }
 
     @Override
-    public <S extends Artist> Iterable<S> saveAll(Iterable<S> iterable) {
+    public <S extends SongmateArtist> Iterable<S> saveAll(Iterable<S> iterable) {
         return null;
     }
 
     @Override
-    public Optional<Artist> findById(Long aLong) {
+    public Optional<SongmateArtist> findById(Long aLong) {
         return Optional.empty();
     }
 
@@ -30,12 +30,12 @@ public class FakeArtistRepository implements ArtistRepository {
     }
 
     @Override
-    public Iterable<Artist> findAll() {
+    public Iterable<SongmateArtist> findAll() {
         return null;
     }
 
     @Override
-    public Iterable<Artist> findAllById(Iterable<Long> iterable) {
+    public Iterable<SongmateArtist> findAllById(Iterable<Long> iterable) {
         return null;
     }
 
@@ -50,12 +50,12 @@ public class FakeArtistRepository implements ArtistRepository {
     }
 
     @Override
-    public void delete(Artist artist) {
+    public void delete(SongmateArtist songmateArtist) {
 
     }
 
     @Override
-    public void deleteAll(Iterable<? extends Artist> iterable) {
+    public void deleteAll(Iterable<? extends SongmateArtist> iterable) {
 
     }
 

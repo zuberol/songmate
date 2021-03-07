@@ -11,11 +11,11 @@ import java.util.Collections;
 import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "songmateusers")
 @Getter @Setter @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User implements UserDetails {
+public class SongmateUser implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

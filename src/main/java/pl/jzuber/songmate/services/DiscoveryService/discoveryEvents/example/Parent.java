@@ -1,9 +1,8 @@
-package pl.jzuber.songmate.model.challenges.example;
+package pl.jzuber.songmate.services.DiscoveryService.discoveryEvents.example;
 
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @AllArgsConstructor

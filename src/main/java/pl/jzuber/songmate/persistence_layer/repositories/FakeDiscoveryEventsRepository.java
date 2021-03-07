@@ -2,22 +2,20 @@ package pl.jzuber.songmate.persistence_layer.repositories;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-import pl.jzuber.songmate.model.challenges.Challenge;
+import pl.jzuber.songmate.services.DiscoveryService.discoveryEvents.DiscoveryEvent;
 import pl.jzuber.songmate.utils.FakeChallengeGenerator;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Repository("fakeChallengeRepo")
-public class FakeChallengeRepository extends ChallengeRepository {
+public class FakeDiscoveryEventsRepository extends DiscoveryEventsRepository {
 
-    private Map<Long, Challenge> challengeMap;
+    private Map<Long, DiscoveryEvent> challengeMap;
     private Random rand = new Random();
     private long sequence = 0;
 
     @Autowired
-    public FakeChallengeRepository(FakeChallengeGenerator fakeChallengeGenerator) {
+    public FakeDiscoveryEventsRepository(FakeChallengeGenerator fakeChallengeGenerator) {
         this.challengeMap = new TreeMap<>();
         fakeChallengeGenerator.generateRandChallengeList(1)
                 .stream()
@@ -33,7 +31,7 @@ public class FakeChallengeRepository extends ChallengeRepository {
     }
 
     @Override
-    public <S extends Challenge> S save(S s) {
+    public <S extends DiscoveryEvent> S save(S s) {
         long notTaken = getSequence();
         while(challengeMap.containsKey(notTaken)) notTaken = getSequence();
         challengeMap.put(notTaken, s);
@@ -41,12 +39,12 @@ public class FakeChallengeRepository extends ChallengeRepository {
     }
 
     @Override
-    public <S extends Challenge> Iterable<S> saveAll(Iterable<S> iterable) {
+    public <S extends DiscoveryEvent> Iterable<S> saveAll(Iterable<S> iterable) {
         return null;
     }
 
     @Override
-    public Optional<Challenge> findById(Long aLong) {
+    public Optional<DiscoveryEvent> findById(Long aLong) {
         return Optional.empty();
     }
 
@@ -56,17 +54,13 @@ public class FakeChallengeRepository extends ChallengeRepository {
     }
 
     @Override
-    public Iterable<Challenge> findAll() {
+    public Iterable<DiscoveryEvent> findAll() {
         return null;
     }
 
     @Override
-    public Iterable<Challenge> findAllById(Iterable<Long> iterable) {
+    public Iterable<DiscoveryEvent> findAllById(Iterable<Long> iterable) {
         return null;
-    }
-
-        public List<Challenge> findAllById(Long id) {
-        return challengeMap.values().stream().filter(rec -> rec.getAddressee().getId() == id).collect(Collectors.toList());
     }
 
     @Override
@@ -80,12 +74,12 @@ public class FakeChallengeRepository extends ChallengeRepository {
     }
 
     @Override
-    public void delete(Challenge challenge) {
+    public void delete(DiscoveryEvent discoveryEvent) {
 
     }
 
     @Override
-    public void deleteAll(Iterable<? extends Challenge> iterable) {
+    public void deleteAll(Iterable<? extends DiscoveryEvent> iterable) {
 
     }
 

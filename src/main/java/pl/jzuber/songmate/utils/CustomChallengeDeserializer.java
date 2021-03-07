@@ -9,8 +9,8 @@ import pl.jzuber.songmate.exceptions.BuilderMethodNotFound;
 import pl.jzuber.songmate.exceptions.ChallengeClassNotKnown;
 import pl.jzuber.songmate.exceptions.JsonPropertyNotMatched;
 import pl.jzuber.songmate.exceptions.NotBuilderClass;
-import pl.jzuber.songmate.model.challenges.Challenge;
-import pl.jzuber.songmate.model.challenges.SendMeSongChallenge;
+import pl.jzuber.songmate.services.DiscoveryService.discoveryEvents.DiscoveryEvent;
+import pl.jzuber.songmate.services.DiscoveryService.discoveryEvents.DiscoverSong;
 import pl.jzuber.songmate.services.DiscoveryService.DiscoveryService;
 
 import java.io.IOException;
@@ -21,7 +21,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Optional;
 
-public class CustomChallengeDeserializer extends JsonDeserializer<Challenge> {
+public class CustomChallengeDeserializer extends JsonDeserializer<DiscoveryEvent> {
 
     DiscoveryService discoveryService;
 
@@ -31,7 +31,7 @@ public class CustomChallengeDeserializer extends JsonDeserializer<Challenge> {
     }
 
     @Override
-    public Challenge deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
+    public DiscoveryEvent deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
         JsonNode root = jsonParser.getCodec().readTree(jsonParser);
 
         try {
@@ -75,7 +75,7 @@ public class CustomChallengeDeserializer extends JsonDeserializer<Challenge> {
 
             buildMethod.setAccessible(true);
             final Object buildedChallenge = buildMethod.invoke(challengeBuilderObject);
-            return (Challenge) buildedChallenge;
+            return (DiscoveryEvent) buildedChallenge;
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -91,6 +91,6 @@ public class CustomChallengeDeserializer extends JsonDeserializer<Challenge> {
 
         }
 
-        return new SendMeSongChallenge();
+        return new DiscoverSong();
     }
 }

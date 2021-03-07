@@ -11,7 +11,7 @@ import javax.persistence.Id;
 
 @Entity
 @Getter @Setter @NoArgsConstructor
-public class Artist {
+public class SongmateArtist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class Artist {
     private String name;               //  The name of the artist.
     private String uri;                 //	string	The Spotify URI for the artist.
 
-    public Artist(String name) {
+    public SongmateArtist(String name) {
         this.name = name;
     }
 }

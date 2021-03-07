@@ -1,4 +1,4 @@
-package pl.jzuber.songmate.model.challenges.example;
+package pl.jzuber.songmate.services.DiscoveryService.discoveryEvents.example;
 
 
 import lombok.Builder;

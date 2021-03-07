@@ -17,16 +17,16 @@ This app's main objective is to connect people who have similar music taste. The
 ### Security layer i.e. authentication, authorization.
 - read spring security documentation,
 - add security config to the project - i suppose we will use JWT,
-- authenticate new user, by asking Spotify auth server for user credentials, when creating user get his password, use Spotify email as a login,
-- create some users and assign roles to them, then add it db,
-- match endpoints with user roles/permissions,
+- authenticate new songmateUser, by asking Spotify auth server for songmateUser credentials, when creating songmateUser get his password, use Spotify email as a login,
+- create some songmateUsers and assign roles to them, then add it db,
+- match endpoints with songmateUser roles/permissions,
 - set Timeout after inactivity interval - i think it can be done, by using application.properties file.
 
 ### Check Spotify API tutorial on connecting your first app to their database.
 - https://developer.spotify.com/documentation/web-api/ - already added to maven dependency, git repo have many useful examples, super simple,
 - create service which will handle talking to spotify about data,
 - use API to fill database tables (Artist, Playlist, Track) - use data.sql file,
-- storing user tokens might be added to User entity, so we can easily send requests to spotify,
+- storing songmateUser tokens might be added to User entity, so we can easily send requests to spotify,
 - add Spotify controller, so it contains endpoits which will be used to talk to spotify db.
 
 ### Develop dummy algorithm which computes graph based on peoples playlists.
@@ -79,7 +79,7 @@ Moze dac uzytkownikowi opcje do zrobienia tak i tak. Nie wszyscy chca rozpisywac
 
 - 3 etapy matchowania:
     - prePrematch - aplikacja preprematchuje 2 użytkowników porownując wybrane przez nich playlisty. Użytkownicy prePrezmatchowani przechodzą do etapu prematch,
-    - prematch - uzytkownik A anonimowo wysyla challenge z servisu Challenge do uzytkownika B (chyba tylko do jednego, zeby nie spamowac). Uzytkownik B przechodzi challenge i odsyla odpowiedz.
+    - prematch - uzytkownik A anonimowo wysyla discoveryEvent z servisu Challenge do uzytkownika B (chyba tylko do jednego, zeby nie spamowac). Uzytkownik B przechodzi discoveryEvent i odsyla odpowiedz.
     - match - Uzytkownik A na podstawie odpowiedzi uzytkownika B podejmuje decyzje o zmatchowaniu.
 
 
@@ -87,24 +87,24 @@ Moze dac uzytkownikowi opcje do zrobienia tak i tak. Nie wszyscy chca rozpisywac
 
 ## Service Challenge:
 1. Challenge musi "zmuszac" obydwu uzytkownikow do interakcji. Nie moze byc tak, ze tylko jeden bierze w nim CZYNNY udzial
-2. Dwa rodzaje challenge'y.
-  - challenge od użytkownika A do użytkownika B - służy do matchowania użytkowników,
-  - challenge wysyłany od aplikacji do użytkownika - cele marketingowe. Może zadanie związane z jakimś obecnie trwającym festiwalem muzycznym. Po wykonaniu i ocenie przez ludzi z festiwalu możesz otrzymać wejściówkę albo cokolwiek, co zaproponują organizatorzy.
+2. Dwa rodzaje discoveryEvent'y.
+  - discoveryEvent od użytkownika A do użytkownika B - służy do matchowania użytkowników,
+  - discoveryEvent wysyłany od aplikacji do użytkownika - cele marketingowe. Może zadanie związane z jakimś obecnie trwającym festiwalem muzycznym. Po wykonaniu i ocenie przez ludzi z festiwalu możesz otrzymać wejściówkę albo cokolwiek, co zaproponują organizatorzy.
 3. Challenge musza byc roznorodne, powinny sie zmieniac.
 
-Przykladowe challenge:
+Przykladowe discoveryEvent:
 - Temat: Tworzenie wspolnej playlisty z jakims tematem.
 - Temat: Promowanie jakiegos artysty, najlepiej niszowego. Sekcja z artykulem na temat artysty, moze wywiadem. Cokolwiek, co pozwoli go poznac. Artysta musi skomponowac playliste muzyki pod wybrany przez niego temat/hashtag/cokolwiek_co_wymyslimy. Chodzi o to, zeby pokazac, ze on korzysta z naszej aplikacji
 - Temat: Uzytkownik musi stworzyc artykul o swoim ulubionym artyscie, ktorego chce wypromowac, o ktorym chce, zeby uzytkownicy poznali. Aplikacja podpowiada jak moze wygladac taki artykul, ale nie wymusza na uzytkowniku formy. Np. Apka zapewnia "szkielet" artykułu - wstep, rozwiniecie, zakonczenie w formie pytan. Npnp.
 Co wyroznia tego artyste?
 Ktore albumy, piosenki chcesz wyroznic?
 Co najbardziej podoba ci sie w nim? W jego muzyce?
-Artykul moze byc zaproszeniem do challenge'u. Np. Dobierz 3 piosenki, ktore sa w tym stylu, ktore ci sie podobaja.
-- Temat: Uzytkownik dostaje powiadomienie o nowym challenge'u. Dobierz 3 piosen
+Artykul moze byc zaproszeniem do discoveryEvent'u. Np. Dobierz 3 piosenki, ktore sa w tym stylu, ktore ci sie podobaja.
+- Temat: Uzytkownik dostaje powiadomienie o nowym discoveryEvent'u. Dobierz 3 piosen
 - Temat: Uzytkownik A napisal artykul o jakims zespole/artyscie. Dobierz 3 piosenki
 - Temat: Ocen playliste - Przed trzema piosenkami uzytkownik moze, ale nie musi dostac dodatkowy komentarz od autora na temat tych piosenek w stylu: "Wanna, wino. Na wieczorny #wpiateklezewwannie" albo "7 rano, mroz, czas uderzac w trasę", czy "Trzy piosenki od Hani Rani, bo jest zajebista i zasluguje na wieksza publike"
 Uzytkownik dostaje 3 piosenki, ktore moze przesluchac za pomoca wbudowanego api spotify i decyzje, czy chce sie zmatchowac.
-- Temat: Uzytkownik A wszedl na strone z artykulem i spedzil na niej 10min. Prawdopodobnie go przeczytal. System sprobuje ich zmatchowac wysylajac dedykowany challenge jednemu i drugiemu.
+- Temat: Uzytkownik A wszedl na strone z artykulem i spedzil na niej 10min. Prawdopodobnie go przeczytal. System sprobuje ich zmatchowac wysylajac dedykowany discoveryEvent jednemu i drugiemu.
 
 
 
@@ -118,7 +118,7 @@ Uzytkownik dostaje 3 piosenki, ktore moze przesluchac za pomoca wbudowanego api 
 Serwis zbierający statystyki na temat ruchu jaki generuje aplikacja. Ilość użytkowników, ilość zmatchowanych osób, wymienionych wiadomości, itd. Ten serwis odpowiada za przetwarzanie tych wszystkich danych z innych serwisów. Output z tego serwisu posłuży nam w celach marketingowych. Można umieszczać te przetworzone dane na stronie głównej, dostępnej PRZED zalogowaniem do aplikacji, żeby zachęcić do skorzystania z niej.
 
 ### Microservice user_experience
-Potrzebujemy servis badający, ktore challenge podobaja sie uzytkownikom najbardziej. Powinnismy wysylac ankiete, poprzedzona zapytaniem, czy chca ja wypelnic i wspomoc tym aplikacje.
+Potrzebujemy servis badający, ktore discoveryEvent podobaja sie uzytkownikom najbardziej. Powinnismy wysylac ankiete, poprzedzona zapytaniem, czy chca ja wypelnic i wspomoc tym aplikacje.
 Ankiety w skali 1-5. Serwis powinien przetwarzać dane (liczy średnią, wariancję, itd).
 
 

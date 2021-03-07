@@ -1,23 +1,23 @@
 package pl.jzuber.songmate.persistence_layer.example.jpaRepoVsCrudRepo;
 
 import org.springframework.data.repository.CrudRepository;
-import pl.jzuber.songmate.model.User;
+import pl.jzuber.songmate.model.SongmateUser;
 
 import java.util.Optional;
 
-public class CrudRepoExample implements CrudRepository<User, Long> {
+public class CrudRepoExample implements CrudRepository<SongmateUser, Long> {
     @Override
-    public <S extends User> S save(S s) {
+    public <S extends SongmateUser> S save(S s) {
         return null;
     }
 
     @Override
-    public <S extends User> Iterable<S> saveAll(Iterable<S> iterable) {
+    public <S extends SongmateUser> Iterable<S> saveAll(Iterable<S> iterable) {
         return null;
     }
 
     @Override
-    public Optional<User> findById(Long aLong) {
+    public Optional<SongmateUser> findById(Long aLong) {
         return Optional.empty();
     }
 
@@ -27,12 +27,12 @@ public class CrudRepoExample implements CrudRepository<User, Long> {
     }
 
     @Override
-    public Iterable<User> findAll() {
+    public Iterable<SongmateUser> findAll() {
         return null;
     }
 
     @Override
-    public Iterable<User> findAllById(Iterable<Long> iterable) {
+    public Iterable<SongmateUser> findAllById(Iterable<Long> iterable) {
         return null;
     }
 
@@ -47,12 +47,12 @@ public class CrudRepoExample implements CrudRepository<User, Long> {
     }
 
     @Override
-    public void delete(User user) {
+    public void delete(SongmateUser songmateUser) {
 
     }
 
     @Override
-    public void deleteAll(Iterable<? extends User> iterable) {
+    public void deleteAll(Iterable<? extends SongmateUser> iterable) {
 
     }
 

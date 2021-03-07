@@ -3,7 +3,7 @@ package pl.jzuber.songmate.utils;
 
 import org.springframework.stereotype.Service;
 import pl.jzuber.songmate.exceptions.CantGenerateMoreData;
-import pl.jzuber.songmate.model.User;
+import pl.jzuber.songmate.model.SongmateUser;
 import pl.jzuber.songmate.security.Role;
 
 
@@ -46,7 +46,7 @@ public class FakeUserGenerator {
         return roles;
     }
 
-    public static User generateUser() {
+    public static SongmateUser generateUser() {
         String line;
         try {
             line = readUserDataFromFile();
@@ -57,7 +57,7 @@ public class FakeUserGenerator {
                                         .map(str -> str.trim().strip())
                                         .collect(Collectors.toList());
 
-        return User.builder().username(userData.get(2))
+        return SongmateUser.builder().username(userData.get(2))
                 .password( userData.get(2) + String.valueOf(rand.nextInt()) )
                 .isAccountNonExpired(rand.nextBoolean())
                 .isAccountNonLocked(rand.nextBoolean())
@@ -69,14 +69,14 @@ public class FakeUserGenerator {
     }
 
     // may return list of users shorter than desired in case of exception
-    public static List<User> getUserList(long numUsers) {
-        List<User> fillWithUsers = new LinkedList<>();
+    public static List<SongmateUser> getUserList(long numUsers) {
+        List<SongmateUser> fillWithSongmateUsers = new LinkedList<>();
         for(int i=0; i<numUsers; ++i) {
-            User u = generateUser();
-            if(u != null) fillWithUsers.add(u);
-            else return fillWithUsers;
+            SongmateUser u = generateUser();
+            if(u != null) fillWithSongmateUsers.add(u);
+            else return fillWithSongmateUsers;
         }
-        return fillWithUsers;
+        return fillWithSongmateUsers;
     }
 
 

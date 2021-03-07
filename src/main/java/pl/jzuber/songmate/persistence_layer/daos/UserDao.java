@@ -3,8 +3,7 @@ package pl.jzuber.songmate.persistence_layer.daos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-import pl.jzuber.songmate.model.User;
+import pl.jzuber.songmate.model.SongmateUser;
 import pl.jzuber.songmate.persistence_layer.repositories.UserRepository;
 
 
@@ -26,12 +25,12 @@ public class UserDao {
     }
 
 
-    public Stream<User> getRandomUsers(Long numUsers){
+    public Stream<SongmateUser> getRandomUsers(Long numUsers){
         //return Collections.EMPTY_LIST.stream();
         return userRepository.getRandomUsers(numUsers);
     }
 
-    public Iterable<User> findAll() {
+    public Iterable<SongmateUser> findAll() {
         return userRepository.findAll();
     }
 
