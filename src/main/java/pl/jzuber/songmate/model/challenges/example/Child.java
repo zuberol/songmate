@@ -1,10 +1,9 @@
-package pl.jzuber.songmate.model.challenges;
+package pl.jzuber.songmate.model.challenges.example;
 
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter

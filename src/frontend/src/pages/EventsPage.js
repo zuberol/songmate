@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import EventBox from '../components/EventBox';
+import EventBox from './../common/EventBox.js';
 
 class EventsPage extends Component {
     render() {

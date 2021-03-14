@@ -1,0 +1,23 @@
+
+.NavBar {
+    height: auto;
+    background-color: navajowhite;
+    text-align: center;
+
+}
+
+.NavBarItem {
+    max-width: 40px;
+    max-height: 40px;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 10px;
+    text-align: center;
+}
+
+.NavBarItem:hover {
+    filter: invert(1);
+}
+
+
+

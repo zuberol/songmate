@@ -19,7 +19,7 @@ public abstract class Challenge {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
     protected String challengeName;
-    protected  User addressee;
+    protected User addressee;
     protected User recipient;
 
 

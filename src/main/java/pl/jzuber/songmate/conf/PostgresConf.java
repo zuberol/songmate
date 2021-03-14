@@ -29,7 +29,6 @@ public class PostgresConf implements WebMvcConfigurer {
     @Bean
     DataSource getDataSource() {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-
         return dataSourceBuilder.driverClassName("org.postgresql.Driver")
                          .url("jdbc:postgresql://localhost:5432/kuba")    //https://jdbc.postgresql.org/documentation/81/connect.html
                          .username("kuba")
@@ -46,14 +45,7 @@ public class PostgresConf implements WebMvcConfigurer {
     public JdbcDaoImpl userDetailsService() {
         JdbcDaoImpl jdbcDaoImpl = new JdbcDaoImpl();
         jdbcDaoImpl.setDataSource(dataSource);
-
         return jdbcDaoImpl;
-    }
-
-
-    @Override   //todo delete that, learn CORS
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**").allowedMethods("*");
     }
 
 }
