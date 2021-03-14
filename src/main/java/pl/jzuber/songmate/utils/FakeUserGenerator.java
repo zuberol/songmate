@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class FakeUserGenerator {
-    final static String FILE_WITH_USERNAMES = "/Users/zuber/java/songmate/src/main/java/pl/jzuber/songmate/utils/names.csv";
+    final static String FILE_WITH_USERNAMES = "/home/jakub/IdeaProjects/songmate/src/main/java/pl/jzuber/songmate/utils/names.csv";
     final static Random rand = new Random();
     static Scanner sc;
 

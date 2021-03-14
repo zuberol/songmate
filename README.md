@@ -3,6 +3,13 @@
 This app's main objective is to connect people who have similar music taste. They can send each other musical challenges, collaborate in making new playlists, chat about music and their beloved artists.
 
 
+## How to run
+git clone https://github.com/zuberol/songmate
+cd songmate
+docker-compose up --remove-orphans
+gradle run
+
+
 ## Things I find cool in this project
 - creating challenges - it is done in "/matching/custom" endpoint. I have implemented a custom deserializer making it possible. It also uses Java Reflection API. Thanks to that I can save many types of challenges with just one endpoint,
 - database connectivity - I have learnt a lot about jdbc, jpa, hibernate and a persistance layer as a whole,
@@ -17,3 +24,7 @@ This app's main objective is to connect people who have similar music taste. The
 - make project reactive using WebFlux,
 - add chat feature using WebSockets,
 - create mobile-first frontend made with React.js.
+
+
+### useful links
+run postgres via docker-compose: https://hub.docker.com/_/postgres

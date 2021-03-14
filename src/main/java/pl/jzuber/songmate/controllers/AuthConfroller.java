@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.jzuber.songmate.model.Artist;
 import pl.jzuber.songmate.model.SpotifyAccessToken;
-import pl.jzuber.songmate.model.messages.SpotifyAuthPrerequisite;
 import pl.jzuber.songmate.persistence_layer.repositories.SpotifyAccessTokenRepository;
 
 import java.util.Collections;
