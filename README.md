@@ -4,10 +4,10 @@ This app's main objective is to connect people who have similar music taste. The
 
 
 ## How to run
-git clone https://github.com/zuberol/songmate
-cd songmate
-docker-compose up --remove-orphans
-gradle run
+- git clone https://github.com/zuberol/songmate
+- cd songmate
+- docker-compose up --remove-orphans
+- gradle run
 
 
 ## Things I find cool in this project
